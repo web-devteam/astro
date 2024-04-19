@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link id="icon" rel="icon" href="rocket_launch_FILL0_wght400_GRAD0_opsz24.png">
+    <title>Astro</title>
+</head>
+<body>
+
+     <link rel="stylesheet" href="index.css">
+     
+     <div id="img"><h5 id="imgtxt">Astro</h5></div>
+     <div id="alarmpage">
+    <h6 id="alarmtext">Alarm</h4>
+<p>time's up</p>
+<button id="close">close</button>
+</div>
+<div id="chatarea"><section></section> <article></article> </div>
+<div id="login">
+<h3 id="astro2">Astro</h3>
+</div>
+<div id="navbarleft">
+    <div id="eyes">
+    <div id="eye1"></div>
+    <div id="eye2"></div>
+</div>
+    <h4 id="nbastro">Astro</h4>
+        <img id="menu" src="more_FILL0_wght400_GRAD0_opsz48.png" alt="">
+    <div id="icons">
+    <img id="calculator" src="calculate_FILL0_wght400_GRAD0_opsz24.png" alt="">
+    <img id="song" src="library_music_FILL0_wght400_GRAD0_opsz24.png" alt="">
+<img id="textto" src="volume_up_FILL0_wght400_GRAD0_opsz24.png" alt="">
+<img id="clean" src="content_paste_FILL0_wght400_GRAD0_opsz24.png" alt="">
+<img id="alarm" src="alarm_FILL0_wght400_GRAD0_opsz24.png" alt="">
+<img id="note" src="sticky_note_2_FILL0_wght400_GRAD0_opsz24.png" alt="">
+<img id="games" src="notifications_FILL0_wght400_GRAD0_opsz24.png" alt="">
+<img id="setting" src="settings_FILL0_wght400_GRAD0_opsz24.png" alt=""><img id="cancel" src="cancel_presentation_FILL0_wght400_GRAD0_opsz24.png" alt=""></div></div>
+<div id="navbarbottom"><input id="chat" type="text"><button id="enter"> <img src="send_FILL0_wght400_GRAD0_opsz24.png" alt=""></button><button id="mic"><img src="mic_FILL0_wght400_GRAD0_opsz24.png" alt=""></button></div>
+<div id="txtview">
+<p id="txtviewtxt"></p>
+<div id="txtviewrow1"><p id="txtviewopt1">opt</p> <p id="txtviewopt2">opt</p><p id="txtviewopt3">opt</p></div>
+<div id="txtviewrow2"><p id="txtviewopt4">opt</p><p id="txtviewopt5">opt</p><button id="txtwiewsend">send </button></div>
+
+</div>
+<div id="fclink">
+    <p id="fclpause">| |</p>
+    <p id="fcltime">00</p>
+    <p id="fclcnl">+</p>
+    </div>
+<div id="sidepanel">
+    <div id="top">
+        <div id="eyes2">
+        <div id="eye3"></div>
+        <div id="eye4"></div>
+       
+    </div>
+        <h4 id="nbastro">Astro</h4>
+        <p id="closesb">hide</p>
+    </div>
+    <h4 id="tile">Astro</h4>
+<div id="alarmcircle"><div id="alarms"><h1 id="emptytxt">no active alarm </h1></div><div id="editb1"><div id="alarmtimeib"><input maxlength="2" id="alarmtime1" value="00" type="number"><input id="alarmtime2" value="00" maxlength="2" type="number" minlength="2"></div><input id="alarmdetail" required placeholder="detail" type="text"><p id="alarmdays">today</p><div id="checkb1"><p class="check" id="check1">m</p><p class="check" id="check2">t</p><p class="check" id="check3">w</p><p class="check" id="check4">t</p><p class="check" id="check5">f</p><p class="check" id="check6">s</p><p class="check" id="check7">s</p></div></div><div id="buttonset0"> <button id="add2">add</button><button id="cancel0">cancel</button></div></div>
+<div id="reminders"><div id="remindersbox"><h1 id="emptytxt3">no active reminder</h1></div><div id="reminderedit"><div id="reminderedittime"><input value="00" id="remindertime1" minvalue="0" maxvalue="23" maxlength="2" type="number"><input id="remindertime2" value="00" maxlength="2" type="number" name="" id=""></div><input id="reminderdate" value="today" placeholder="date" type="text"><input id="remindercontent" placeholder="reminder" type="text"><div id="rmd"><label id="reminderchecklabel" for="remindercheck">link to checklist</label><input type="checkbox" id="remindercheck"></div><select id="checkselect"><option value="none">none</option></select></div><div id="reminderbuttonset"><button id="add3">add</button><button id="cancel2">cancel</button></div></div>
+<div id="notes"><div id="notesbox"><h1 id="emptytxt2">no saved note </h1></div><div id="noteedit"><input placeholder="title" type="text" id="notenamein"><textarea name="" id="notecontentin" cols="30" rows="10" placeholder="content"></textarea><div id="nmd"><label id="checkltlabel" for="checklisttoggle">edit to checklist</label><input type="checkbox" id="checklisttoggle"></div></div><div id="notebtnset"><button id="add4">add</button><button id="cancel1">cancel</button></div></div>
+<div id="scheduels"><div id="scheduelvalue"><p>scheduels</p><div id="scheduelsclvalue"><p id="scheduelscledit">✏️</p></div><textarea name="scheduelsvalue" id="scheduelsvalue" cols="30" rows="10"></textarea></div><button id="add6">add</button></div>
+<div id="texttospeech"><div id="tttvalue"><p>text reader</p><textarea name="texttospeechvalue" id="texttospeechvalue" cols="30" rows="10"></textarea></div><button id="read">read</button><button id="pause">pause</button></div>
+<div id="musics"><div id="b2"></div><div id="addbox"><p id="songnt">song name</p><input id="songn" type="text"><p>select file</p><input type="file" id="ainput5" multiple  accept="audio/*" onchange="music5(event)"><div id="labeldiv"><label for="multi">choose multiple files</label><input id="multi" type="checkbox"></div></div><label id="musicadd">+</label><div id="list"><p id="madd">✖️</p><p id="mback">◀️</p><p id="mreplay">🔂</p><p id="mforwardplay">🔁</p><p id="mrandom">🔀</p><p id="mforward">▶️</p></div><div id="songplaying"><p id="sptxt"></p></div><audio id="audio4" src="" controls></audio></div>
+<div id="calculators"><div id="calcscreen"><p id="topvalue"></p><p id="bottomvalue">0</p></div><div id="kset1"><div id="row1"><p class="key" id="key1">1</p><p class="key" id="key2">2</p><p class="key" id="key3">3</p><p class="key" id="key4">4</p><p class="key" id="key+">+</p></div>  <div id="row2"><p class="key" id="key5">5</p><p class="key" id="key6">6</p> <p class="key" id="key7">7</p><p class="key" id="key8">8</p><p class="key" id="key-">-</p>  </div> <div id="row4"><p class="key" id="key9">9</p> <p class="key" id="key10">0</p><p class="key" id="key*">*</p><p class="key" id="key.">.</p><p class="key" id="key/">/</p></div><div id="row3"><p class="key" id="key%">%</p> <p class="key" id="keydel">del</p> <p class="key" id="keyclr">clr</p> <p id="keye">=</p></div> </div> 
+<div id="kset2"><div id="row1"><p class="key" id="key1">1</p><p class="key" id="key2">2</p><p class="key" id="key3">3</p><p class="key" id="key4">4</p> <p class="key" id="key5">5</p><p class="key" id="key+">+</p></div> <div id="row2"><p class="key" id="key6">6</p> <p class="key" id="key7">7</p><p class="key" id="key8">8</p> <p class="key" id="key9">9</p><p class="key" id="key10">0</p> <p class="key" id="key-">-</p></div> <div id="row4"> <p class="key" id="key*">*</p><p class="key" id="key.">.</p><p class="key" id="key/">/</p> <p class="key" id="key%">%</p> <p class="key" id="keyclr">clr</p> <p id="keye">=</p></div></div></div>
+<div id="settings"><div id="settingsbox"><div id="sminidiv"><p id="settingsp">username</p><label for="username">name</label><input id="username" type="text"></div><div id="sminidiv2"><p id="settingsp">schedule</p><label for="scheduletime">time</label><input id="scheduletime" placeholder="min\hour" type="text"><p id="settingsp">schedule format</p><label for="scheduelopt1">checklist format</label><input id="scheduelopt1" name="radio" type="radio"><br><br><label for="scheduelopt2">one click format</label><input id="scheduelopt2" name="radio" type="radio"></div><div id="sminidiv3"><p id="settingsp">alarm</p><label for="alarmstset">snooze time</label><input id="alarmstset" placeholder="min" type="number"><br><br><label for="alarmsoundset">sound</label><select id="alarmsoundset"><option value="alarm 1">alarm 1</option><option value="alarm 2">alarm 2</option><option value="alarm 3">alarm 3</option><option value="alarm 4">alarm 4</option><option value="alarm 5">alarm 5</option></select></div>
+<div id="sminidiv4"><p id="settingsp">reminder</p><label for="reminderdurset">duration</label><input id="reminderdurset" placeholder="min" type="number"><br><br><label for="remindersoundset">sound</label><select id="remindersoundset"><option value="sound 1">sound 1</option><option value="sound 2">sound 2</option><option value="sound 3">sound 3</option><option value="sound 4">sound 4</option><option value="sound 5">sound 5</option></select></div><div id="sminidiv5"><p id="settingsp">astro voice</p><label class="voiceonlabel" for="voiceon" id="settingsp">turn off</label><input id="voiceon" value="0" max="1" type="range"></div><div id="sminidiv6"><p id="settingsp">battery notification</p><label for="battfullset">full level</label><input id="battfullset" placeholder="%" type="number"><br><br><label for="battlowset">low level</label><input id="battlowset" placeholder="%" type="number"></div><div id="sminidiv7"><p id="settingsp">email, phone and app</p><button id="elogbtn">open email log</button><button id="plogbtn">open phone log</button><button id="alogbtn">open apps log</button></div><button id="save2">reset</button></div>
+</div>
+</div>
+
+<div id="sleepscreen">
+
+<div id="voicebar"><img id="closebtn" src="close_FILL0_wght400_GRAD0_opsz24.png" alt=""><img id="micbtn" src="mic_FILL0_wght400_GRAD0_opsz24.png" alt=""><img id="focusbtn" src="alarm_FILL0_wght400_GRAD0_opsz24.png" alt=""></div>
+<div id="timebox"><p id="time">00:00</p></div>
+<div id="fctimebox"><p id="focustime">00:00:00</p></div>
+<div id="focusctrl"><h2 id="focusheader">focus mode</h2><div id="fcadd"><input id="fcname" placeholder="title" type="text"><div id="fcseldiv"><input id="fclength" placeholder="focus length" type="number"><select id="fcsel1"><option value="min">min</option><option value="hour">hour</option></select></div><div id="fcseldiv"><input id="fcbreak" placeholder="break time" type="number"><select id="fcsel2"><option value="min">min</option><option value="hour">hour</option></select></div><input id="fcbreakno" placeholder="total number of breaks" type="number"><h2 id="totalfctime">total focus time : 0min</h2><button id="fcstart">start</button></div>
+<div id="fcpref"><p id="fcitem"><input type="radio">read your bible</p><progress id="fcpro" value="0" max="100"><input type="range"></progress><h2 id="timeremaining">30</h2><p id="breaktxt">break in 5 min</p><div id="fcbtnset"><button id="fcpause">pause</button><button id="fccnl">cancel</button></div></div>
+<div id="fcmusic"><p id="fcplayingmusic">no audio playing</p><div id="fcmc"><p id="fcprevsong">◀️</p><p id="fcplaysong">⏸️</p><p id="fcnextsong">▶️</p></div><div><progress value="0" max="100" id="songpro"><input type="range"></progress><p id="songdur">00:00/00:00</p></div><p id="fcvolumetxt">volume: 90%</p></div>
+<div id="fcinfo"><div id="infobx"><p id="fcweathertxt">weather: kaduna sunny</p></div><div id="infobx"><p id="fctimetxt">time/date: sun march 06 2024 13:40:33</p></div><div id="infobx"><p id="fcbatterytxt">battery: no battery info</p></div><div id="infobx"><p id="fcsongtxt">no song playing</p></div><div id="infobx"><p id="fcelapsedtxt">no current focus session</p></div><div id="fcbtnset2"><button id="notelink"><img src="sticky_note_2_FILL0_wght400_GRAD0_opsz24.png" alt=""></button><button id="calclink"><img src="calculate_FILL0_wght400_GRAD0_opsz24.png" alt=""></button><button id="musiclink"><img src="library_music_FILL0_wght400_GRAD0_opsz24.png" alt=""></button></div></div></div>
+<div id="focustabs"><h2 id="preftab">focus</h2><h2 id="musictab">music</h2><h2 id="infotab">info</h2></div>
+<div id="musiccontrol"><p id="mcback">◀</p><p id="mcplay">⏸</p><p id="mcnext">▶</p></div>
+<p id="fcclose">close</p>
+</div>
+
+<div id="commandlist">
+    <p id="qcsettings">⚙️</p> <div id="qcsettingsdiv"><label for="qcmethod">quick command display method</label><select id="qcmethod"><option value="double click">double click</option><option value="right click">right click</option><option value="drag">drag</option></select></div>
+    <h2 id="qch2">quick command</h2>
+    <p class="command" id="sidebarcommand">show sidebar</p>
+    <p class="command" id="voicemcommand">turn on voice mode</p>
+    <p class="command" id="focuscommand">start focus session</p>
+    <p class="command" id="hsidebarcommand">hide sidebar</p>
+    <p class="command" id="timercommand">show timer</p>
+</div>
+
+<div id="timer">
+    <input id="range" type="range" max="1" value="0">
+<div id="timervalue2box"><input maxlength="2" id="timervalue2h" value="00" type="text"><input maxlength="2" id="timervalue2m" value="00" type="text"><input maxlength="2" id="timervalue2s" value="00" type="text"></div>
+    <div id="timervaluebox"><p id="timervalueh">00</p><p id="timervaluem">00</p><p id="timervalues">00</p></div>
+    <div id="buttonset1"><button id="start2">start</button>
+    <button id="start3">start</button>
+    <button id="stop2">stop</button>
+    <button id="pause2">pause</button></div>
+        <div id="buttonset2"><button id="start21">start</button>
+    <button id="start31">start</button>
+    <button id="stop21">stop</button>
+    <button id="pause21">pause</button></div>
+</div>
+<div id="snoozebox"><div id="snoozeminidv">
+<img id="snoozeimg" src="computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-44413c43e2dd5f4f467181772ee8a7d5.png" alt="">
+<input id="snoozetimein" placeholder="snooze time" value="5" type="number"></div>
+<div id="snoozebuttonset"><button id="snoozebtn">snooze</button><button id="snoozecnl">cancel</button></div>
+</div>
+<div id="ractivebox">
+<img src="clipboard-computer-icons-copytrans-document-clipboard-7de158a6e2319f0ed3ee3fbdf9e8ac0c.png" id="ractivecl" alt="">
+<p id="ractivetxt">reminder so so so</p>
+<div id="ractivebtnset"><button id="ractivecnl">cancel</button><button id="ractivedel">delete</button></div>
+</div>
+<div id="blank">
+<div id="emaillog">
+    <h2>email log</h2>
+    <p id="elogcnl">❌</p>
+    <div id="elogscroll">
+ </div>
+    <button id="elogadd">add</button>
+</div>
+<div id="phonelog">
+    <h2>phone log</h2>
+    <p id="plogcnl">❌</p>
+    <div id="plogscroll">
+  </div>
+    <button id="plogadd">add</button>
+</div>
+<div id="applog">
+    <p id="extxt">* experimental *</p>
+    <h2>apps log</h2>
+    <p id="alogcnl">❌</p>
+    <div id="alogscroll">
+  </div>
+    <button id="alogadd">add</button>
+</div></div>
+<div id="tip">
+  
+    <p id="tiptxt"></p>
+</div>
+<div id="getsbox">
+<div id="gsleft"><h2 id="gsheader">get started</h2><p id="gstxt">welcome to the quick guide, this will walk you through some of the basic features and help you get started. first of your browser notification permission will be requested, this is necessary for features like the alarm and reminder. just tap allow in your browser then click next to continue</p><button id="gsnext">next</button></div>
+<div id="gsright"><div id="gsimgbox"><img id="gsimg" src="abstract-background-with-colorful-symmetric-geometric-print-vibrating-geometry-wallpaper-with-composition-repeat-rectangles-lines-horizontal-illustration-banner-design-generative-ai_9209-12059.avif" alt=""></div><progress id="gspro" value="1" max="5"><input type="range"></progress></div>
+</div>
+<p id="offmodetxt">offline mode activated</p>
+<div id="loadpage">
+    <div id="section1"><div id="line"></div><img id="displayimg" src="abstract-background-with-colorful-symmetric-geometric-print-vibrating-geometry-wallpaper-with-composition-repeat-rectangles-lines-horizontal-illustration-banner-design-generative-ai_9209-12059.avif" alt=""></div>
+    <div id="section2">    <h1 id="astro">Astro</h1>
+  <p id="infotxt"></p>
+    <h2 id="motto">your personal assistant</h2>
+    <div id="loadbar"><p id="bar">.</p> <p id="bar2"> .</p> <p id="bar3"> .</p> <p id="bar4"> .</p></div></div>
+
+    <p id="version">version 3.1</p>
+</div>
+<div id="lounge">
+    <div id="lounges1">
+        <h1 id="loungeheader">Astro game lounge</h1>
+        <button id="exit">exit</button>
+    </div>
+    <div id="lounges2"><img src="abstract-background-with-colorful-symmetric-geometric-print-vibrating-geometry-wallpaper-with-composition-repeat-rectangles-lines-horizontal-illustration-banner-design-generative-ai_9209-12059.avif" alt=""></div>
+</div>
+<a id="youtube" href="http://youtube.com" target="_blank"></a>
+<audio id="notification" src="livechat-129007.mp3"></audio>
+<a id="tab" href="https://google.com" target="_blank"></a>
+<a id="tab" href="" target="_blank"></a>
+<a id="search" href="" target="_blank"></a>
+<a id="phonecall" href="" target="_blank"></a>
+<button id="completed">done</button>
+<button id="getstarted">get started</button>
+<audio id="timesup" src="Wake Up.mp3"></audio>
+<audio id="remindersound" src="alarm.mp3"></audio>
+<audio id="testsound" src="alarm.mp3"></audio>
+<audio id="battsound" src="livechat-129007.mp3"></audio>
+<audio id="timersound" src="Time Up.mp3"></audio>
+<div id="error">
+    <h1 id="errorh1">Notice</h1>
+    <img id="errorimg" src="computer-monitor-cartoon-style-icon-260nw-1391806010.jpg" alt="">
+    <p id="errortxt">this site is not available for this display,
+        please try using a larger device like a pc or mobile phone to open this page
+    </p>
+</div>
+
+<script src="index.js">
+</script>
+</body> 
+</html>
