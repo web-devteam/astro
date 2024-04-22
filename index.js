@@ -905,7 +905,7 @@ newuser=1
 })
 
 mic.addEventListener("click", speak)
-document.getElementById("micbtn").addEventListener("click", ()=>{start=true; speak2()})
+document.getElementById("micbtn").addEventListener("click", ()=>{start=true; speak2(); player.pause()})
 
 function speak2 (){
   if(tipsarray[7]==0){document.getElementById("tip").style.display="flex"; document.getElementById("tiptxt").innerHTML="tap the mic icon to reconnect if the voice recognition stops listening, tap the clock icon to switch between the focus session and voice mode"; document.getElementById("tip").style.right="50px"; document.getElementById("tip").style.top="100px"
@@ -916,8 +916,8 @@ function speak2 (){
 
 
   let voice = new window.webkitSpeechRecognition;
-voice.onstart = function f3(){console.log("speak"); on=true; };
-voice.onend = function f4(){console.log("stop"); on=false;
+voice.onstart = function f3(){console.log("speak"); on=true; document.getElementById("listening").style.backgroundColor="rgb(81, 255, 0)"};
+voice.onend = function f4(){console.log("stop"); on=false; document.getElementById("listening").style.backgroundColor="orange";
 setTimeout(()=>{if(start==true){window.speechSynthesis.cancel();voice.start(); voice.continuous=true}
 else{voice.end()}}, 3500)};
 voice.continuous=true
@@ -2273,7 +2273,7 @@ let array = remindercontent[index].split("|")
     }
     
     
-    })}; search=false; array2[1]="null"}
+    })}; search=false; array2[1]="null"; array2[0]="null"}
     let value1 = alarmtime.split(":")
 value1=value1[0]+value1[1]
 let value2 =array[0].split(":")
@@ -3291,8 +3291,10 @@ document.getElementById("fclpause").addEventListener("click", ()=>{
   document.getElementById("fcpause").click()
 })
 let playing = false
-
-document.getElementById("fcplaysong").addEventListener("click", ()=>{
+document.getElementById("mcplay").addEventListener("click", ()=>{
+  document.getElementById("fcplaysong").click()
+  })
+document.getElementById("fcplaysong").addEventListener("click", ()=>{start=false;
   console.log(player.src)
 if(player.src.includes("null") || player.src.includes("undefined")){mindex=0; console.log("pppppppppppppppppppppppppppppppppppppppppppppppppppppp")
 player.src = array[mindex]
@@ -3312,7 +3314,10 @@ setInterval(()=>{
   console.log(player.played)
 }, 1000)
 })
-document.getElementById("fcnextsong").addEventListener("click", ()=>{
+document.getElementById("mcnext").addEventListener("click", ()=>{
+  document.getElementById("fcnextsong").click()
+  })
+document.getElementById("fcnextsong").addEventListener("click", ()=>{start=false;
   document.getElementById("mforward").click() 
 setInterval(()=>{
   document.getElementById("songdur").innerHTML=parseInt(player.currentTime)+" sec"+"/"+parseInt(player.duration)+" sec"
@@ -3321,7 +3326,10 @@ setInterval(()=>{
   console.log(player.played)
 }, 1000)
 })
-document.getElementById("fcprevsong").addEventListener("click", ()=>{
+document.getElementById("mcback").addEventListener("click", ()=>{
+document.getElementById("fcprevsong").click()
+})
+document.getElementById("fcprevsong").addEventListener("click", ()=>{start=false;
   document.getElementById("mback").click()  
 setInterval(()=>{
   document.getElementById("songdur").innerHTML=parseInt(player.currentTime)+" sec"+"/"+parseInt(player.duration)+" sec"
@@ -3724,7 +3732,7 @@ applog = localStorage.getItem("applog")
 notecontent = localStorage.getItem("notecontent")
 alarmlogic = localStorage.getItem("alarmlogic")
 let newday = localStorage.getItem("newday")
-if(newday==null){newday=gdate;}
+if(newday==null){newday=gdate; localStorage.setItem("newday", newday)}
 if(remindercontent==null){remindercontent=[]}
 else{remindercontent=remindercontent.split(",")}
 console.log(remindercontent)
@@ -4101,13 +4109,13 @@ if((array[0]==alarmtime && search==true && alarmlogic[index]=="true") || timing2
   timing2=false
     arang[index]="true"
 localStorage.setItem("arang", arang)
-array[0]="null"
 let box2 = document.createElement("article");
 reply = document.createElement("h6");
 let chatarea = document.getElementById("chatarea");
 box2.appendChild(reply)
 chatarea.appendChild(box2);
 reply.innerHTML="your "+array[0]+" alarm is active";
+array[0]="null"
   let notify = new Notification("alarm", {body: array[1], icon:"computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-44413c43e2dd5f4f467181772ee8a7d5.png"})
   setTimeout(()=>{notify.close()}, 4000)
 }
@@ -4440,9 +4448,7 @@ let array1 = notecontent[index].split("|")
 if(array1[0]==array[3]){document.getElementById("notechecklist"+index).style.display="block"
 document.getElementById("noteshow"+index).innerHTML="✏️"}
 }
-
-
-})}; search=false; array[1]="null"}
+})}; search=false; array[1]="null"; array[0]="null"}
 
 let value1 = alarmtime.split(":")
 value1=value1[0]+value1[1]
@@ -4741,6 +4747,7 @@ scheduelsvalue.value = localStorage.getItem("state13");
 if(date2==value3){document.getElementById("add6").style.backgroundColor="green"}
 document.getElementById("add6").addEventListener("click", ()=>{
 completed.click()
+document.getElementById("add6").style.backgroundColor="green"
 })
 scheduelsvalue.addEventListener("focusout", ()=>{
   localStorage.setItem("state13", scheduelsvalue.value)
