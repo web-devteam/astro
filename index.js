@@ -118,7 +118,7 @@ setTimeout(()=>{if(parseInt(attempt)<4){
 else if(loaded==false){window.alert("astro couldn't seem to fix the issue please try using a differnt web browser or restarting your current web browser. if you wish to continue you might experience some issue. please contact us for more information"); }
 else{sessionStorage.setItem("attempt", "0")}
 if(loaded2==false && loaded==false){window.alert("one or more of astro's api's could not load successfully, this may be due to the data loading error. you may wish to continue, but some functions might be offline")}
-else if(loaded2==false){window.alert("it seem's like your web browser does not support astro's battery function, you may try using another web browser. if you wish to continue, astro will still function normally but the battery functions would be offline")}}, 2000)
+else if(loaded2==false){window.alert("it seem's like your web browser does not support astro's battery function, you may try using another web browser. if you wish to continue, astro will still function normally but the battery functions would be offline")}}, 9000)
 function tag(){
   let num = Math.floor(Math.random() *4)
   console.log(num)
