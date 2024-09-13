@@ -3009,8 +3009,8 @@ position: absolute;
 
   }
   @media screen and (max-height: 430px) {
-   /* #error{display: flex;
-    } */
+    #error{display: flex;
+    } 
     #errorimg{
         width: 30%;
     }
@@ -3074,9 +3074,9 @@ border-left: 1.5px solid black;
 
       }
       @media screen and (max-width: 330px) {
-/*#error{
+#error{
     display: flex;
-}*/
+}
       }
       @media screen and (max-width: 400px) {
 #commandlist{
