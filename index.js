@@ -928,7 +928,7 @@ let index = -1
       console.log(transcript);
       text = transcript;
       voice.stop()
-      f2()
+     if(text!=""){f2()}
         };
     
         voice.addEventListener("result", ()=>{
