@@ -6,6 +6,7 @@ let randomize = Math.floor(Math.random()*8)
 let ran1 = Math.floor(Math.random() *255)
 let ran2 = Math.floor(Math.random() *255)
 let ran3 = Math.floor(Math.random() *255)
+let nextsong = ""
 let color = "rgb("+ran1+", "+ran2+", "+ran3+")"
 
 console.log(randomize)
@@ -189,7 +190,9 @@ let tab = document.getElementById("tab");
 let username = document.getElementById("username");
 let date = 0;
 let statement = null;
- setInterval((function datev(){date = new Date; console.log(date); document.getElementById("fctimetxt").innerHTML="time/date : "+date}), 1000);
+ setInterval((function datev(){date = new Date;
+  //console.log(date);
+   document.getElementById("fctimetxt").innerHTML="time/date : "+date}), 1000);
 let on = false;
 let text = "";
 let start = false
@@ -222,6 +225,7 @@ let formertxt = ""
 
 function f2 (){
     let chat = document.createElement("p");
+    
     let box = document.createElement("section");
     let box2 = document.createElement("article");
     reply = document.createElement("h6");
@@ -529,8 +533,8 @@ else if(chat2.includes("search for")){reply.innerHTML="okay"; acceptinput=true; 
 else if(chat2.includes("call")){  reply.innerHTML="okay calling "+callername; acceptinput=true; call();}
 else if(chat.innerText=="flip a coin"){  let coinv = Math.floor(Math.random() *2);  if(coinv==1){ coin="head"} else{coin="tail"}; reply.innerText=coin}
 else if(chat.innerText=="roll a dice"){  let dicev = Math.floor(Math.random() *7);  dice = dicev;  console.log(dicev); reply.innerText=dice}
-else if(chat2.includes("set an alarm for")){reply.innerHTML="okay"; acceptinput=true; alarm(); }
-else if(chat2.includes("remind me to")){reply.innerHTML="okay"; acceptinput=true; reminder()}
+else if(chat2.includes("set an alarm for")){reply.innerHTML="okay"; acceptinput=true; alarm(); fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+else if(chat2.includes("remind me to")){reply.innerHTML="okay"; acceptinput=true; reminder(); fade("notifications_FILL0_wght400_GRAD0_opsz24.png")}
 else if(chat.innerText=="add note" || chat.innerText=="add Note"){reply.innerHTML="okay"; show(); document.getElementById("notes").style.display="block";
 document.getElementById("calculators").style.display="none";
 document.getElementById("alarmcircle").style.display="none";
@@ -563,7 +567,7 @@ document.getElementById("notes").style.display="none";
 document.getElementById("musics").style.display="none";
 document.getElementById("texttospeech").style.display="none";
 document.getElementById("settings").style.display="none"; title.innerHTML="schedule";}
-else if(chat.innerText=="read my schedule" || chat.innerText=="view my schedule"){scheduelread(); reply.innerHTML=scheduelsvalue.value; box2.appendChild(completed);box2.addEventListener("click", ()=>{shows()}) ;}
+else if(chat.innerText=="read my schedule" || chat.innerText=="view my schedule"){scheduelread(); fade("content_paste_FILL0_wght400_GRAD0_opsz24.png"); reply.innerHTML=scheduelsvalue.value; box2.appendChild(completed);box2.addEventListener("click", ()=>{shows()}) ;}
 else if(chat.innerText=="clear my schedule" || chat.innerText=="delete my schedule"){reply.innerHTML="your schedule has been cleared"; scheduelsvalue.value="";}
 else if(chat.innerText=="text to speech" || chat.innerText=="text-to-speech" || chat.innerText=="open text to speech" || chat.innerText=="open text-to-speech"){reply.innerHTML="okay lets begin"; acceptinput=true; show(); document.getElementById("texttospeech").style.display="block";
 document.getElementById("calculators").style.display="none";
@@ -693,32 +697,35 @@ else if(statement=="describeme"){reply.innerHTML= "good, thanks for asking"}
  else if(statement=="closecalculator"){reply.innerHTML="okay"; hide()}
  else if(statement=="meclosecalculator"){reply.innerHTML="okay"; hide()}
  else if(statement=="userclosecalculator"){reply.innerHTML="okay"; hide()}
-  else if(statement=="playrmusic"){reply.innerHTML= "okay";document.getElementById("songcreate").click(); songmode="random"; start=false}
- else if(statement=="userplayrmusic"){reply.innerHTML= "okay";document.getElementById("songcreate").click(); songmode="random"; start=false}
- else if(statement=="meplayrmusic"){reply.innerHTML= "okay";document.getElementById("songcreate").click(); songmode="random"; start=false}
- else if(statement=="playmusic"){reply.innerHTML= "okay"; document.getElementById("songcreate").click(); start=false}
- else if(statement=="userplaymusic"){reply.innerHTML= "okay";document.getElementById("songcreate").click(); start=false}
- else if(statement=="meplaymusic"){reply.innerHTML= "okay"; document.getElementById("songcreate").click(); start=false}
- else if(statement=="playmusicnext"){reply.innerHTML= "okay"; document.getElementById("mforward").click(); start=false}
- else if(statement=="userplaymusicnext"){reply.innerHTML= "okay"; document.getElementById("mforward").click(); start=false}
- else if(statement=="meplaymusicnext"){reply.innerHTML= "okay"; document.getElementById("mforward").click(); start=false}
- else if(statement=="playmusicprev"){reply.innerHTML= "okay"; document.getElementById("mback").click(); start=false}
- else if(statement=="userplaymusicprev"){reply.innerHTML= "okay"; document.getElementById("mback").click(); start=false}
- else if(statement=="meplaymusicprev"){reply.innerHTML= "okay"; document.getElementById("mback").click(); start=false}
+  else if(statement=="playrmusic"){reply.innerHTML= "okay";document.getElementById("songcreate").click(); songmode="random"; start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="userplayrmusic"){reply.innerHTML= "okay";document.getElementById("songcreate").click(); songmode="random"; start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="meplayrmusic"){reply.innerHTML= "okay";document.getElementById("songcreate").click(); songmode="random"; start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="playmusic"){reply.innerHTML= "okay"; document.getElementById("songcreate").click(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="userplaymusic"){reply.innerHTML= "okay";document.getElementById("songcreate").click(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="meplaymusic"){reply.innerHTML= "okay"; document.getElementById("songcreate").click(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="playmusicnext"){reply.innerHTML= "okay"; document.getElementById("mforward").click(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="userplaymusicnext"){reply.innerHTML= "okay"; document.getElementById("mforward").click(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="meplaymusicnext"){reply.innerHTML= "okay"; document.getElementById("mforward").click(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="playmusicprev"){reply.innerHTML= "okay"; document.getElementById("mback").click(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="userplaymusicprev"){reply.innerHTML= "okay"; document.getElementById("mback").click(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="meplaymusicprev"){reply.innerHTML= "okay"; document.getElementById("mback").click(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
  else if(statement=="mestartfc"){reply.innerHTML= "okay"; document.getElementById("focuscommand").click()}
  else if(statement=="startfc"){reply.innerHTML= "okay"; document.getElementById("focuscommand").click()}
  else if(statement=="userstartfc"){reply.innerHTML= "okay"; document.getElementById("focuscommand").click()}
- else if(statement=="userplay"){acceptinput=true; reply.innerHTML="okay"; musicp(); start=false}
- else if(statement=="play"){acceptinput=true; reply.innerHTML="okay"; musicp(); start=false}
- else if(statement=="meplay"){acceptinput=true; reply.innerHTML="okay"; musicp(); start=false}
- else if(statement=="pausemusic"){reply.innerHTML= "okay"; player.pause()}
- else if(statement=="unpausemusic"){reply.innerHTML= "okay"; player.play(); start=false}
- else if(statement=="mepausemusic"){reply.innerHTML= "okay"; player.pause()}
- else if(statement=="meunpausemusic"){reply.innerHTML= "okay"; player.play(); start=false}
- else if(statement=="userpausemusic"){reply.innerHTML= "okay"; player.pause()}
- else if(statement=="userunpausemusic"){reply.innerHTML= "okay"; player.play(); start=false}
- else if(statement=="pause"){reply.innerHTML= "okay"; player.pause()}
- else if(statement=="unpause"){reply.innerHTML= "okay"; player.play(); start=false}
+ else if(statement=="userplay"){acceptinput=true; reply.innerHTML="okay"; musicp(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="play"){acceptinput=true; reply.innerHTML="okay"; musicp(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="meplay"){acceptinput=true; reply.innerHTML="okay"; musicp(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+  else if(statement=="userplaynext"){acceptinput=true; reply.innerHTML="okay"; musicp2(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="playnext"){acceptinput=true; reply.innerHTML="okay"; musicp2(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="meplaynext"){acceptinput=true; reply.innerHTML="okay"; musicp2(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="pausemusic"){reply.innerHTML= "okay"; player.pause();; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="unpausemusic"){reply.innerHTML= "okay"; player.play(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="mepausemusic"){reply.innerHTML= "okay"; player.pause(); fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="meunpausemusic"){reply.innerHTML= "okay"; player.play(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="userpausemusic"){reply.innerHTML= "okay"; player.pause(); fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="userunpausemusic"){reply.innerHTML= "okay"; player.play(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="pause"){reply.innerHTML= "okay"; player.pause(); fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="unpause"){reply.innerHTML= "okay"; player.play(); start=false; fade("library_music_FILL0_wght400_GRAD0_opsz24.png")}
  else if(statement=="ttt"){reply.innerHTML="okay lets begin"; showt()}
  else if(statement=="openttt"){reply.innerHTML="okay lets begin"; showt()}
  else if(statement=="meopenttt"){reply.innerHTML="okay lets begin"; showt()}
@@ -728,33 +735,33 @@ else if(statement=="describeme"){reply.innerHTML= "good, thanks for asking"}
  else if(statement=="userclosettt"){reply.innerHTML="okay"; hide()}
  else if(statement=="usergame"){reply.innerHTML= "i don't have any game we could play";}
  else if(statement=="megame"){reply.innerHTML= "i don't have any inbuilt game";}
- else if(statement=="viewscheduel"){scheduelread(); reply.innerHTML=scheduelsvalue.value; box2.appendChild(completed);box2.addEventListener("click", ()=>{shows()}) ;}
- else if(statement=="meviewscheduel"){scheduelread(); reply.innerHTML=scheduelsvalue.value; box2.appendChild(completed);box2.addEventListener("click", ()=>{shows()}) ;}
- else if(statement=="userviewscheduel"){scheduelread(); reply.innerHTML=scheduelsvalue.value; box2.appendChild(completed);box2.addEventListener("click", ()=>{shows()}) ;}
+ else if(statement=="viewscheduel"){scheduelread(); fade("content_paste_FILL0_wght400_GRAD0_opsz24.png"); reply.innerHTML=scheduelsvalue.value; box2.appendChild(completed);box2.addEventListener("click", ()=>{shows()}) ;}
+ else if(statement=="meviewscheduel"){scheduelread();fade("content_paste_FILL0_wght400_GRAD0_opsz24.png"); reply.innerHTML=scheduelsvalue.value; box2.appendChild(completed);box2.addEventListener("click", ()=>{shows()}) ;}
+ else if(statement=="userviewscheduel"){scheduelread();fade("content_paste_FILL0_wght400_GRAD0_opsz24.png"); reply.innerHTML=scheduelsvalue.value; box2.appendChild(completed);box2.addEventListener("click", ()=>{shows()}) ;}
  else if(statement=="deletealarm"){reply.innerHTML="okay"; alarmdel()}
- else if(statement=="viewalarm"){ reply.innerHTML="okay you have an alarm for"+" "+alarmview; alarmloop();}
- else if(statement=="viewtodayalarm"){ reply.innerHTML="okay you have an alarm for"+" "+alarmview; alarmloop();}
- else if(statement=="medeletealarm"){reply.innerHTML="okay"; alarmdel()}
- else if(statement=="meviewalarm"){reply.innerHTML="okay you have an alarm for"+" "+alarmview; alarmloop(); }
- else if(statement=="meviewtodayalarm"){ reply.innerHTML="okay you have an alarm for"+" "+alarmview;alarmloop(); }
- else if(statement=="userdeletealarm"){reply.innerHTML="okay"; alarmdel()}
- else if(statement=="userviewalarm"){ reply.innerHTML="okay you have an alarm for"+" "+alarmview;alarmloop(); }
- else if(statement=="userviewtodayalarm"){ reply.innerHTML="okay you have an alarm for"+" "+alarmview;alarmloop(); }
- else if(statement=="cancelalarm"){reply.innerHTML="okay"; document.getElementById("snoozecnl").click()}
- else if(statement=="snoozealarm"){alarmsnooze(); reply.innerHTML="okay"  }
- else if(statement=="mecancelalarm"){reply.innerHTML="okay"; document.getElementById("snoozecnl").click()}
- else if(statement=="mesnoozealarm"){alarmsnooze(); reply.innerHTML="okay" }
- else if(statement=="usercancelalarm"){reply.innerHTML="okay"; document.getElementById("snoozecnl").click()}
- else if(statement=="usersnoozealarm"){alarmsnooze(); reply.innerHTML="okay" }
- else if(statement=="viewnote"){; reply.innerHTML=notevalue; note()}
- else if(statement=="meviewnote"){; reply.innerHTML=notevalue; note()}
- else if(statement=="userviewnote"){; reply.innerHTML=notevalue; note()}
- else if(statement=="deletenote"){; reply.innerHTML="okay"; notedel()}
- else if(statement=="medeletenote"){; reply.innerHTML="okay"; notedel()}
- else if(statement=="userdeletenote"){; reply.innerHTML="okay"; notedel()}
- else if(statement=="deletereminder"){ reply.innerHTML="okay"; reminderdel();}
- else if(statement=="medeletereminder"){ reply.innerHTML="okay"; reminderdel();}
- else if(statement=="userdeletereminder"){ reply.innerHTML="okay"; reminderdel();}
+ else if(statement=="viewalarm"){ reply.innerHTML="okay you have an alarm for"+" "+alarmview; alarmloop();; fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="viewtodayalarm"){ reply.innerHTML="okay you have an alarm for"+" "+alarmview; alarmloop();; fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="medeletealarm"){reply.innerHTML="okay"; alarmdel(); fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="meviewalarm"){reply.innerHTML="okay you have an alarm for"+" "+alarmview; alarmloop(); ; fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="meviewtodayalarm"){ reply.innerHTML="okay you have an alarm for"+" "+alarmview;alarmloop(); ; fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="userdeletealarm"){reply.innerHTML="okay"; alarmdel(); fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="userviewalarm"){ reply.innerHTML="okay you have an alarm for"+" "+alarmview;alarmloop(); ; fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="userviewtodayalarm"){ reply.innerHTML="okay you have an alarm for"+" "+alarmview;alarmloop(); ; fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="cancelalarm"){reply.innerHTML="okay"; document.getElementById("snoozecnl").click(); fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="snoozealarm"){alarmsnooze(); reply.innerHTML="okay"  ; fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="mecancelalarm"){reply.innerHTML="okay"; document.getElementById("snoozecnl").click(); fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="mesnoozealarm"){alarmsnooze(); reply.innerHTML="okay" ; fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="usercancelalarm"){reply.innerHTML="okay"; document.getElementById("snoozecnl").click(); fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="usersnoozealarm"){alarmsnooze(); reply.innerHTML="okay" ; fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="viewnote"){; reply.innerHTML=notevalue; note(); fade("sticky_note_2_FILL0_wght400_GRAD0_opsz24.png") }
+ else if(statement=="meviewnote"){; reply.innerHTML=notevalue; note();fade("sticky_note_2_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="userviewnote"){; reply.innerHTML=notevalue; note();fade("sticky_note_2_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="deletenote"){; reply.innerHTML="okay"; notedel();fade("sticky_note_2_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="medeletenote"){; reply.innerHTML="okay"; notedel();fade("sticky_note_2_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="userdeletenote"){; reply.innerHTML="okay"; notedel();fade("sticky_note_2_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="deletereminder"){ reply.innerHTML="okay"; reminderdel();fade("notifications_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="medeletereminder"){ reply.innerHTML="okay"; reminderdel();fade("notifications_FILL0_wght400_GRAD0_opsz24.png")}
+ else if(statement=="userdeletereminder"){ reply.innerHTML="okay"; reminderdel();fade("notifications_FILL0_wght400_GRAD0_opsz24.png")}
  else if(statement=="cancelreminder"){document.getElementById("ractivecnl").click(); reply.innerHTML="okay"; }
  else if(statement=="mecancelreminder"){document.getElementById("ractivecnl").click(); reply.innerHTML="okay"; }
  else if(statement=="usercancelreminder"){document.getElementById("ractivecnl").click(); reply.innerHTML="okay"; }
@@ -827,7 +834,7 @@ else if(chat2.includes("same here")){reply.innerHTML="😊"}
 else if(chat2.includes("can i call you")){reply.innerHTML="i dont think my codes will allow that"}
 //else if(chat2.includes("play")){acceptinput=true; reply.innerHTML="okay"; musicp()}
 
-else{if(reference=="me"){reply.innerHTML="that's a hard question for me"} else if(statement.includes("describe") || statement.includes("place") || statement.includes("explain") || statement.includes("time") || statement.includes("question") || statement.includes("name")){reply.innerHTML= "i am not sure of "+chat2+" but i could help you research on that"; conti=true; situ="search";formerreply=reply.innerHTML; } else{let rand = Math.floor(Math.random() *2); if(rand==0){reply.innerHTML="am sorry i do not have a response for that"} else{reply.innerHTML="i am sorry but i don't understand"} if(add>3){reply.innerHTML="please remember "+username.value+" that i am not a chatbot and i can only  provide you assistance and help with web searches. for a list of things i could help with, type command"; add=0}else{add=add+1}}}
+else{if(reference=="me"){reply.innerHTML="that's a hard question for me "} else if(statement.includes("describe") || statement.includes("place") || statement.includes("explain") || statement.includes("time") || statement.includes("question") || statement.includes("name")){reply.innerHTML= "i am not sure of "+chat2+" but i could help you research on that"; conti=true; situ="search";formerreply=reply.innerHTML; } else{let rand = Math.floor(Math.random() *2); if(rand==0){reply.innerHTML="..."} else{reply.innerHTML="omoo 🥲"} if(add>3){reply.innerHTML="please remember "+username.value+" that i am not a chatbot and i can only  provide you assistance and help with web searches. for a list of things i could help with, type command"; add=0}else{add=add+1}}}
 
 chattext.value="";
 if(document.getElementById("voiceon").value=="1"){
@@ -843,14 +850,14 @@ console.log(situ)
 
 
 function f4 (){
-  if((formertxt.includes("ok") || formertxt.includes("okay") || formertxt.includes("yes")) && conti==true && formerreply.includes("but i could help you research on that")){
+  if((formertxt.includes("ok") || formertxt.includes("okay") || formertxt.includes("yes")|| formertxt.includes("yeah")) && conti==true && formerreply.includes("but i could help you research on that")){
     let place = formerreply.indexOf("but i could help you research on that")
   searchd.href="https://www.google.com/search?q="+formerreply.slice(17, place)
   searchd.click()
   console.log("worked")
   }
-  else if((formertxt.includes("ok") || formertxt.includes("okay") || formertxt.includes("yes")) && conti==true && formerreply.includes("hello"+" "+username.value)){
-    if(question=="would you like me to read your scheduel"){scheduelread(); reply.innerHTML=scheduelsvalue.value; box2.appendChild(completed); box2.addEventListener("click", ()=>{shows()}) ;}
+  else if((formertxt.includes("ok") || formertxt.includes("okay") || formertxt.includes("yes")|| formertxt.includes("yeah")) && conti==true && formerreply.includes("hello"+" "+username.value)){
+    if(question=="would you like me to read your scheduel"){scheduelread();fade("content_paste_FILL0_wght400_GRAD0_opsz24.png"); reply.innerHTML=scheduelsvalue.value; box2.appendChild(completed); box2.addEventListener("click", ()=>{shows()}) ;}
     else if(question=="would you like me to play you a song"){reply.innerHTML= "okay "+username.value; document.getElementById("songcreate").click()}
     else if(question=="would you like me to tell you a joke"){reply.innerHTML=joke}
     else if(question=="how may i help you"){reply.innerHTML="😊"}
@@ -906,7 +913,7 @@ newuser=1
 
 mic.addEventListener("click", speak)
 document.getElementById("micbtn").addEventListener("click", ()=>{start=true; speak2(); player.pause()})
-
+let ibm = ""
 function speak2 (){
   if(tipsarray[7]==0){document.getElementById("tip").style.display="flex"; document.getElementById("tiptxt").innerHTML="tap the mic icon to reconnect if the voice recognition stops listening, tap the clock icon to switch between the focus session and voice mode"; document.getElementById("tip").style.right="50px"; document.getElementById("tip").style.top="100px"
   setTimeout(() => {
@@ -919,17 +926,22 @@ function speak2 (){
 voice.onstart = function f3(){console.log("speak"); on=true; document.getElementById("listening").style.backgroundColor="rgb(81, 255, 0)"};
 voice.onend = function f4(){console.log("stop"); on=false; document.getElementById("listening").style.backgroundColor="orange";
 setTimeout(()=>{if(start==true){window.speechSynthesis.cancel();voice.start(); voice.continuous=true}
-else{voice.end()}}, 3500)};
+else{voice.stop()}}, 3500)};
 voice.continuous=true
 let index = -1
     voice.onresult = function(event) {
       index=index+1
       var transcript = event.results[0][0].transcript;
       console.log(transcript);
-      text = transcript;
       voice.stop()
-     if(text!=""){f2()}
-        };
+     if(transcript.slice(0, 5)=="astro" ){
+    text=transcript.slice(5, )
+    console.log(transcript.slice(0, 5))
+    console.log(text)
+    f2()
+     }
+        console.log(transcript.slice(0, 5)) };
+       
     
         voice.addEventListener("result", ()=>{
           
@@ -940,6 +952,7 @@ voice.start()
 function speak (){
 
     let voice = new window.webkitSpeechRecognition;
+
 voice.start()
 voice.onstart = function f3(){console.log("speak"); on=true;};
 voice.onend = function f4(){console.log("stop"); on=false;};
@@ -951,6 +964,7 @@ voice.onend = function f4(){console.log("stop"); on=false;};
         console.log("text")
       };
       voice.addEventListener("result", ()=>{f2()})
+
 };
 
 let scheduelsvalue = document.getElementById("scheduelsvalue");
@@ -995,7 +1009,7 @@ console.log(gdate)
 setInterval((function datelog (){
   let time = date.toString();
 alarmtime = time.slice(16, 21);
-console.log(alarmtime)}), 1000)
+}), 1000)
 
 
 
@@ -1619,8 +1633,8 @@ let array = alarmcontent[index].split("|")
   let array2 = alarmcontent[index].split("|")
   setInterval(()=>{
   let array1 = array2[2].split(".")
-  console.log(array1)
-  console.log(array2)
+//  console.log(array1)
+//  console.log(array2)
   let search = false
   
   for (let index = 0; index < array1.length; index++) {
@@ -2230,7 +2244,7 @@ let array = remindercontent[index].split("|")
     
     
     setInterval(()=>{
-    console.log(array2)
+    //console.log(array2)
     let search = false
     if(array2[1].includes(gmon) && parseInt(array2[1])==gdate){search=true}
     if(array2[1]==generaldate2){search=true}
@@ -2264,7 +2278,7 @@ let array = remindercontent[index].split("|")
     let notify = new Notification("reminder", {body: array[2], icon:"5bfc1c0ea645f-2723436d0f517f1d2e2b58510a7b6a72.png"})
     if(array2[3]=="none"){document.getElementById("ractivecl").style.display="none"}
     else{document.getElementById("ractivecl").addEventListener("click", ()=>{
-    console.log(array2[3])
+   // console.log(array2[3])
     shown();
     for (let index = 0; index < notecontent.length; index++) {
     let array1 = notecontent[index].split("|")
@@ -2310,7 +2324,7 @@ reply.innerHTML="remember to "+array[2]+" "+username.value;
   let notify = new Notification("reminder", {body: "missed reminder : "+array[2], icon:"5bfc1c0ea645f-2723436d0f517f1d2e2b58510a7b6a72.png"})
   if(array[3]=="none"){document.getElementById("ractivecl").style.display="none"}
   else{document.getElementById("ractivecl").style.display="block"; document.getElementById("ractivecl").addEventListener("click", ()=>{
-  console.log(array[3])
+ // console.log(array[3])
   shown();
   for (let index = 0; index < notecontent.length; index++) {
   let array1 = notecontent[index].split("|")
@@ -2397,22 +2411,7 @@ document.getElementById("qcmethod").addEventListener("input", ()=>{
   ; localStorage.setItem("showmethod", document.getElementById("qcmethod").value)
 })
 
-if(localStorage.getItem("showmethod")==null){document.getElementById("chatarea").addEventListener("dblclick", ()=>{
-  document.getElementById("commandlist").style.display="flex"
-  
-})}
-else if(localStorage.getItem("showmethod")=="double click"){document.getElementById("chatarea").addEventListener("dblclick", ()=>{
-  document.getElementById("commandlist").style.display="flex"
-  
-})}
-else if(localStorage.getItem("showmethod")=="right click"){document.getElementById("chatarea").addEventListener("auxclick", ()=>{
-  document.getElementById("commandlist").style.display="flex"
-  
-})}
-else if(localStorage.getItem("showmethod")=="drag"){document.getElementById("chatarea").addEventListener("drag", ()=>{
-  document.getElementById("commandlist").style.display="flex"
-  
-})}
+
 let qcs =false
 document.getElementById("qcsettings").addEventListener("click", ()=>{
 if(qcs==false){  document.getElementById("qcsettingsdiv").style.display="flex"; qcs=true}
@@ -2534,7 +2533,7 @@ document.getElementById("madd").addEventListener("click", ()=>{
   document.getElementById("madd").innerText="✖️"}
 })
 let player = document.getElementById("audio4")
-let names = []
+
 
 
 
@@ -2560,6 +2559,8 @@ let namee = document.getElementById("songn")
 
 
 function music5(event){
+  let names = []
+  let array = []
   if(document.getElementById("ainput5").value!==""){
   if(document.getElementById("madd").innerText=="❌"){document.getElementById("madd").innerText="✖️"}
   let pre = names.length
@@ -2573,129 +2574,69 @@ function music5(event){
  document.getElementById("b2").append(song)
  console.log(array)
  //click
- song.addEventListener("click", ()=>{let psong = song.innerText
 
-  for (let index = 0; index < names.length; index++) {
-    if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); mindex=index}  
-    }
-    player.src = array[mindex]
-    player.play()
-     console.log(player);
-  player.addEventListener("mouseover", ()=>{
-    document.getElementById("songplaying").style.display="flex" 
-    document.getElementById("sptxt").innerHTML=psong
-  })
-  document.getElementById("fcplayingmusic").innerHTML="playing : "+psong    
-  document.getElementById("fcsongtxt").innerHTML="playing : "+psong
-  })
-song.addEventListener("dblclick", ()=>{song.style.display="none";
-
-let psong = song.innerText;
-for (let index = 0; index < names.length; index++) {
-  if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); array.splice(index, 1); names.splice(index, 1); console.log(names); console.log(array)}  
-}})}
+}
 else{console.log(document.getElementById("ainput5").files.length)
+
+const DB_NAME = "multiAudioDB";
+const STORE_NAME = "audioFiles";
+
+// Open IndexedDB
+let db;
+const request = indexedDB.open(DB_NAME, 1);
+
+request.onupgradeneeded = (e) => {
+  db = e.target.result;
+  db.createObjectStore(STORE_NAME, { keyPath: "id", autoIncrement: true });
+};
+
+request.onsuccess = (e) => {
+  db = e.target.result;
+
+    const files = event.target.files;
+  const tx = db.transaction(STORE_NAME, "readwrite");
+  const store = tx.objectStore(STORE_NAME);
+const clearRequest = store.clear();
+
+  clearRequest.onsuccess = () => {
+    console.log("All audio files cleared.");
+  Array.from(files).forEach((file) => {
+    store.add({ file });
+    
+  });
+  
+  };
+
+
+};
+
+
 for (let index = 0; index < document.getElementById("ainput5").files.length; index++) {
   pre = names.length
   let song = document.createElement("p")
   song.id="songcreate";
   let object = event.target.files[index]
- names[pre] = object.name
+ if(object.name.includes(",")){let point = object.name.indexOf(",")-1
+  names[pre]=object.name.slice(0, point)}
+  else{names[pre] = object.name}
  song.innerText=names[pre]; console.log(names)
  array[pre]=URL.createObjectURL(event.target.files[index])
  console.log(array)
  document.getElementById("b2").append(song)
- //click
- song.addEventListener("click", ()=>{let psong = song.innerText
-  player.removeEventListener("ended", ()=>{mautoplay()})
-  for (let index = 0; index < names.length; index++) {
-    if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); mindex=index}  
-    }
-    player.src = array[mindex]
-    player.play()
-     console.log(player);
-  player.addEventListener("mouseover", ()=>{
-    document.getElementById("songplaying").style.display="flex" 
-    document.getElementById("sptxt").innerHTML=psong
-  })
-  document.getElementById("fcplayingmusic").innerHTML="playing : "+psong    
-  document.getElementById("fcsongtxt").innerHTML="playing : "+psong
-  })
-song.addEventListener("dblclick", ()=>{song.style.display="none";
 
-let psong = song.innerText;
-for (let index = 0; index < names.length; index++) {
-  if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); array.splice(index, 1); names.splice(index, 1); console.log(names); console.log(array)}  
-}})
 }
+localStorage.setItem("savednames", names)
+
 }
  document.getElementById("b2").style.display="block";
 }
-  }
-
-
-function musicp (){
-  let ppsong = ""
-  let locate = chattext.value.indexOf("play")
-  let psong = chattext.value.slice(locate+5, )
-  console.log(psong);
-  for (let index = 0; index < names.length; index++) {
-    if(names[index].toLowerCase().includes(psong)){console.log(psong); console.log(index); console.log(names[index]); player.src=array[index]; player.play(); ppsong=names[index]} 
-
-    }
-    if(ppsong==""){reply.innerHTML="no song found"}
-  }
-player.addEventListener("ended", ()=>{mreplay()})
-player.addEventListener("ended", ()=>{mautoplay()})
-player.addEventListener("ended", ()=>{mrandomplay()})
-
-function mrandomplay(){ 
-  if(songmode=="random"){
-   let num = Math.floor(Math.random() *array.length-1)
-    console.log(player)
-  player.src=array[num]
-    console.log(num)
-    player.play()
-    player.addEventListener("mouseover", ()=>{
-      document.getElementById("songplaying").style.display="flex" 
-      document.getElementById("sptxt").innerHTML=names[num]
-    })
-    document.getElementById("fcplayingmusic").innerHTML="playing : "+names[num]
-    document.getElementById("fcsongtxt").innerHTML="playing : "+names[num]
-  }
+window.alert("reload page to effect changes")
 }
+
+
+
+
  let truet = false
-
-function mautoplay(){ 
-  if(songmode=="forwardplay"){
-    mindex=mindex+1
-      if(mindex==array.length){mindex=0; console.log("end")};
-    player.src=array[mindex]
-      console.log(mindex)
-      player.play()
-    truet=true
-    player.addEventListener("mouseover", ()=>{
-      document.getElementById("songplaying").style.display="flex" 
-      document.getElementById("sptxt").innerHTML=names[mindex]
-    })
-    document.getElementById("fcplayingmusic").innerHTML="playing : "+names[mindex]
-    document.getElementById("fcsongtxt").innerHTML="playing : "+names[mindex]
-  }   
-}
-
-function mreplay(){ 
-  if(songmode=="replay"){
-  player.src=array[mindex]
-    console.log(mindex)
-    player.play()
-    player.addEventListener("mouseover", ()=>{
-      document.getElementById("songplaying").style.display="flex" 
-      document.getElementById("sptxt").innerHTML=names[mindex]
-    })
-    document.getElementById("fcplayingmusic").innerHTML="playing : "+names[mindex]
-    document.getElementById("fcsongtxt").innerHTML="playing : "+names[mindex]
-  }
-}
 
 document.getElementById("mreplay").addEventListener("click", ()=>{
     document.getElementById("mforwardplay").style.display="block"
@@ -2717,55 +2658,7 @@ document.getElementById("mrandom").addEventListener("click", ()=>{
     songmode="replay"
     localStorage.setItem("songmode", songmode)
 })
-document.getElementById("mback").addEventListener("click", ()=>{
-mindex=mindex-1
-if(mindex==-1){mindex=array.length-1};
-if(songmode=="replay"){player.src = array[mindex]
-  player.play()
-   console.log(player);}
-else if(songmode=="forwardplay"){player.src = array[mindex]
-  player.play()
-   console.log(player);}
-else if(songmode=="random"){mindex=Math.floor(Math.random() *array.length-1);  
-  player.src = array[mindex]
-  player.play()
-   console.log(player);}
-  console.log(songmode)
-  player.addEventListener("mouseover", ()=>{
-    document.getElementById("songplaying").style.display="flex" 
-    document.getElementById("sptxt").innerHTML=names[mindex]
-  })
-  document.getElementById("fcplayingmusic").innerHTML="playing : "+names[mindex]
-  document.getElementById("fcsongtxt").innerHTML="playing : "+names[mindex]
-})
-document.getElementById("mforward").addEventListener("click", ()=>{
-  mindex=mindex+1
-if(mindex==array.length){mindex=0};
-  if(songmode=="replay"){
-    player.src = array[mindex]
-  player.play()
-   console.log(player);
-  }
-  else if(songmode=="forwardplay"){
-    player.src = array[mindex]
-  player.play()
-   console.log(player);
-  }
-  else if(songmode=="random"){mindex=Math.floor(Math.random() *array.length-1); 
-    player.src = array[mindex]
-    player.play()
-     console.log(player);}
-    console.log(songmode)
-    player.addEventListener("mouseover", ()=>{
-      document.getElementById("songplaying").style.display="flex" 
-      document.getElementById("sptxt").innerHTML=names[mindex]
-    })
-    document.getElementById("fcplayingmusic").innerHTML="playing : "+names[mindex]
-    document.getElementById("fcsongtxt").innerHTML="playing : "+names[mindex]
-  })
-player.addEventListener("mouseleave", ()=>{
-    document.getElementById("songplaying").style.display="none" 
-  })
+
 
 
 ttt.addEventListener("click", function8)
@@ -3055,7 +2948,7 @@ let initialgap2=brlength+1
   let provalue2=0
  finter2 = setInterval(()=>{if(focuspause==false){
 sec12=sec12-1
-console.log(sec12)
+//console.log(sec12)
 let sec2 = 60-sec12
 document.getElementById("fcpro").value=provalue2+(sec2/60)
 document.getElementById("focustime").innerHTML=brlength+" min, "+sec12+" sec"
@@ -3296,7 +3189,7 @@ document.getElementById("mcplay").addEventListener("click", ()=>{
   })
 document.getElementById("fcplaysong").addEventListener("click", ()=>{start=false;
   console.log(player.src)
-if(player.src.includes("null") || player.src.includes("undefined")){mindex=0; console.log("pppppppppppppppppppppppppppppppppppppppppppppppppppppp")
+if(player.src.includes("null") || player.src.includes("undefined")){mindex=0;
 player.src = array[mindex]
 player.play()
  console.log(player);
@@ -3311,7 +3204,7 @@ setInterval(()=>{
   document.getElementById("songdur").innerHTML=parseInt(player.currentTime)+" sec"+"/"+parseInt(player.duration)+" sec"
   document.getElementById("songpro").max=parseInt(player.duration)
   document.getElementById("songpro").value=parseInt(player.currentTime)
-  console.log(player.played)
+ // console.log(player.played)
 }, 1000)
 })
 document.getElementById("mcnext").addEventListener("click", ()=>{
@@ -3323,7 +3216,7 @@ setInterval(()=>{
   document.getElementById("songdur").innerHTML=parseInt(player.currentTime)+" sec"+"/"+parseInt(player.duration)+" sec"
   document.getElementById("songpro").max=parseInt(player.duration)
   document.getElementById("songpro").value=parseInt(player.currentTime)
-  console.log(player.played)
+//  console.log(player.played)
 }, 1000)
 })
 document.getElementById("mcback").addEventListener("click", ()=>{
@@ -3335,7 +3228,7 @@ setInterval(()=>{
   document.getElementById("songdur").innerHTML=parseInt(player.currentTime)+" sec"+"/"+parseInt(player.duration)+" sec"
   document.getElementById("songpro").max=parseInt(player.duration)
   document.getElementById("songpro").value=parseInt(player.currentTime)
-  console.log(player.played)
+ // console.log(player.played)
 }, 1000)
 })
 document.getElementById("fcvolumetxt").innerHTML="volume : "+player.volume*100
@@ -4091,8 +3984,8 @@ let array = alarmcontent[index].split("|")
 let close = false
 setInterval(()=>{
 let array1 = array[2].split(".")
-console.log(array1)
-console.log(array)
+//console.log(array1)
+//console.log(array)
 let search = false
 
 for (let index = 0; index < array1.length; index++) {
@@ -4407,7 +4300,7 @@ for (let index = 0; index < remindercontent.length; index++) {
   let array = ""
 if(remindercontent[index]!=""){ array = remindercontent[index].split("|")}
 setInterval(()=>{
-console.log(array)
+//console.log(array)
 let search = false
 if(array[1].includes(gmon) && parseInt(array[1])==gdate){search=true; }
 if(array[1]==generaldate2.padEnd()){search=true}
@@ -4799,10 +4692,10 @@ if(window.innerHeight<550){let height2 = parseInt(window.innerHeight)-240
 
   if(parseInt(window.innerHeight)*1.8>parseInt(window.innerWidth)){
     console.log("smaller")
-    if(window.innerWidth+200>window.innerHeight){    document.getElementById("sleepscreen").style.backgroundImage=" url(image5.jpg)"}
-   else{document.getElementById("sleepscreen").style.backgroundImage=" url(image1.jpg)"}
+    if(window.innerWidth+200>window.innerHeight){ }
+   else{}
       }
-      else{document.getElementById("sleepscreen").style.backgroundImage=" url(afd1dc8ece4e386bf5975b0d60578bfc33.jpg)"}
+      else{}
 loaded=true
 console.log(loaded)
 }
@@ -5038,10 +4931,10 @@ document.getElementById("txtwiewsend").addEventListener("click", ()=>{
 window.addEventListener("resize", ()=>{
   if(parseInt(window.innerHeight)*1.8>parseInt(window.innerWidth)){
     console.log("smaller")
-    if(window.innerWidth+200>window.innerHeight){    document.getElementById("sleepscreen").style.backgroundImage=" url(image5.jpg)"}
-    else{    document.getElementById("sleepscreen").style.backgroundImage=" url(image1.jpg)"}
+    if(window.innerWidth+200>window.innerHeight){}
+    else{   }
       }
-      else{    document.getElementById("sleepscreen").style.backgroundImage=" url(afd1dc8ece4e386bf5975b0d60578bfc33.jpg)"}
+      else{   }
   let height = parseInt(window.innerHeight)-140
 document.getElementById("chatarea").style.height=height+"px"
 if(window.innerHeight<550){let height2 = parseInt(window.innerHeight)-240
@@ -5097,3 +4990,361 @@ document.getElementById("txtviewopt5").addEventListener("click", ()=>{
 })
 
 loaded2=true
+
+window.addEventListener("blur", ()=>{
+  document.getElementsByTagName("title").item(0).innerHTML="Astro : passive"
+
+})
+window.addEventListener("focus", ()=>{
+  document.getElementsByTagName("title").item(0).innerHTML="Astro"
+
+})
+function setimg(event) {
+  let valuemm = URL.createObjectURL(event.target.files[0])
+document.getElementById("sleepscreen").style.backgroundImage= "url("+valuemm+")"
+document.getElementById("sleepsave").src= valuemm
+document.getElementById("sleepsave").style.display="none"
+// Save
+const img = document.getElementById("sleepsave");
+img.onload = function () {
+const canvas = document.createElement("canvas");
+canvas.width = img.width;
+canvas.height = img.height;
+const ctx = canvas.getContext("2d");
+ctx.drawImage(img, 0, 0);
+const dataURL = canvas.toDataURL("image/png");
+localStorage.setItem("savedsleepimage", dataURL);
+}
+console.log("saved image 5125")
+}
+
+if(localStorage.getItem("savedsleepimage")!=null){   
+  document.getElementById("sleepscreen").style.backgroundImage= "url("+localStorage.getItem("savedsleepimage")+")"
+
+}
+
+
+const DB_NAME = "multiAudioDB";
+const STORE_NAME = "audioFiles";
+
+// Open IndexedDB
+let db;
+const request = indexedDB.open(DB_NAME, 1);
+
+request.onupgradeneeded = (e) => {
+  db = e.target.result;
+  db.createObjectStore(STORE_NAME, { keyPath: "id", autoIncrement: true });
+};
+
+request.onsuccess = (e) => {
+  db = e.target.result;
+
+  loadAllAudio();
+};
+
+// Save selected files
+
+
+
+  let audioarray=[]
+  let names = localStorage.getItem("savednames")
+// Load all saved audio
+function loadAllAudio() {
+  const tx = db.transaction(STORE_NAME, "readonly");
+  const store = tx.objectStore(STORE_NAME);
+  const getAll = store.getAll();
+
+  getAll.onsuccess = () => {
+  
+    getAll.result.forEach((item) => {
+      const audioURL = URL.createObjectURL(item.file);
+      audioarray[audioarray.length]=audioURL
+    });
+    console.log(audioarray)
+    
+names=names.split(",")
+console.log(names)
+
+for (let index = 0; index < names.length; index++) {
+  let song = document.createElement("p")
+  song.id="songcreate";
+ song.innerText=names[index]; 
+ document.getElementById("b2").append(song)
+
+ //click
+ song.addEventListener("click", ()=>{let psong = song.innerText
+  //player.removeEventListener("ended", ()=>{mautoplay()})
+
+  for (let index = 0; index < names.length; index++) {
+    if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); mindex=index}  
+    }
+    player.src = audioarray[mindex]
+    player.play()
+     console.log(player);
+  player.addEventListener("mouseover", ()=>{
+    document.getElementById("songplaying").style.display="flex" 
+    document.getElementById("sptxt").innerHTML=psong
+  })
+  document.getElementById("fcplayingmusic").innerHTML="playing : "+psong    
+  document.getElementById("fcsongtxt").innerHTML="playing : "+psong
+  })
+song.addEventListener("dblclick", ()=>{song.style.display="none";
+
+let psong = song.innerText;
+for (let index = 0; index < names.length; index++) {
+  if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); audioarray.splice(index, 1); names.splice(index, 1); console.log(names); console.log(array)}  
+}})
+}
+  
+};
+}
+function musicp (){
+  let ppsong = ""
+  let locate = chattext.value.indexOf("play")
+
+  let psong = chattext.value.slice(locate+5, )
+  console.log(psong);
+  for (let index = 0; index < names.length; index++) {
+    if(names[index].toLowerCase().includes(psong)){console.log(psong); console.log(index); console.log(names[index]); player.src=audioarray[index]; player.play(); ppsong=names[index]} 
+
+    }
+    if(ppsong==""){reply.innerHTML="no song found"}
+  }
+function musicp2 (){
+  let ppsong = ""
+  let locate = chattext.value.indexOf("play")
+  let locate2 = chattext.value.indexOf("next") 
+  let psong = chattext.value.slice(locate+5, locate2-1)
+  console.log(psong);
+  for (let index = 0; index < names.length; index++) {
+    if(names[index].toLowerCase().includes(psong)){console.log(psong); console.log(index); console.log(names[index]);nextsong=index; ppsong=names[index]} 
+
+    }
+    if(ppsong==""){reply.innerHTML="no song found"}
+  }
+
+player.addEventListener("ended", ()=>{mreplay()})
+player.addEventListener("ended", ()=>{mautoplay()})
+player.addEventListener("ended", ()=>{mrandomplay()})
+
+function mrandomplay(){ 
+  if(songmode=="random"){
+   let num = Math.floor(Math.random()*(audioarray.length-1))
+    console.log(player)
+  player.src=audioarray[num]
+    console.log(num)
+    player.play()
+    player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=names[num]
+    })
+    document.getElementById("fcplayingmusic").innerHTML="playing : "+names[num]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+names[num]
+ if(nextsong!=""){player.src=audioarray[nextsong];player.play();nextsong=""} }
+}
+
+
+function mautoplay(){ 
+  if(songmode=="forwardplay"){
+    mindex=mindex+1
+      if(mindex==audioarray.length){mindex=0; console.log("end")};
+    player.src=audioarray[mindex]
+      console.log(mindex)
+      player.play()
+    truet=true
+    player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=names[mindex]
+    })
+    document.getElementById("fcplayingmusic").innerHTML="playing : "+names[mindex]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+names[mindex]
+   if(nextsong!=""){player.src=audioarray[nextsong];player.play();nextsong=""} }   
+}
+
+function mreplay(){ 
+  if(songmode=="replay"){
+  player.src=audioarray[mindex]
+    console.log(mindex)
+    player.play()
+    player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=names[mindex]
+    })
+    document.getElementById("fcplayingmusic").innerHTML="playing : "+names[mindex]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+names[mindex]
+   if(nextsong!=""){player.src=audioarray[nextsong];player.play();nextsong=""} }
+}
+
+
+
+document.getElementById("mback").addEventListener("click", ()=>{
+mindex=mindex-1
+if(mindex==-1){mindex=audioarray.length-1};
+if(songmode=="replay"){player.src = audioarray[mindex]
+  player.play()
+   console.log(player);}
+else if(songmode=="forwardplay"){player.src = audioarray[mindex]
+  player.play()
+   console.log(player);}
+else if(songmode=="random"){mindex=Math.floor(Math.random() *audioarray.length-1);  
+  player.src = audioarray[mindex]
+  player.play()
+   console.log(player);}
+  console.log(songmode)
+  player.addEventListener("mouseover", ()=>{
+    document.getElementById("songplaying").style.display="flex" 
+    document.getElementById("sptxt").innerHTML=names[mindex]
+  })
+  document.getElementById("fcplayingmusic").innerHTML="playing : "+names[mindex]
+  document.getElementById("fcsongtxt").innerHTML="playing : "+names[mindex]
+})
+document.getElementById("mforward").addEventListener("click", ()=>{
+  mindex=mindex+1
+if(mindex==audioarray.length){mindex=0};
+  if(songmode=="replay"){
+    player.src = audioarray[mindex]
+  player.play()
+   console.log(player);
+  }
+  else if(songmode=="forwardplay"){
+    player.src = audioarray[mindex]
+  player.play()
+   console.log(player);
+  }
+  else if(songmode=="random"){mindex=Math.floor(Math.random() *audioarray.length-1); 
+    player.src = audioarray[mindex]
+    player.play()
+     console.log(player);}
+    console.log(songmode)
+    player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=names[mindex]
+    })
+    document.getElementById("fcplayingmusic").innerHTML="playing : "+names[mindex]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+names[mindex]
+  })
+player.addEventListener("mouseleave", ()=>{
+    document.getElementById("songplaying").style.display="none" 
+  })
+
+ function fade(src) {
+document.getElementById("eye1").style.animationName="fade"
+document.getElementById("eye1").style.animationDelay="0s"
+document.getElementById("eye1").style.animationDuration="0.5s"
+document.getElementById("eye2").style.animationName="fade"
+document.getElementById("eye2").style.animationDelay="0s"
+document.getElementById("eye2").style.animationDuration="0.5s"
+document.getElementById("disimg").style.animationName="fade2"
+document.getElementById("disimg").style.animationDelay="0.4s"
+document.getElementById("disimg").style.animationDuration="1s"
+setTimeout(() => {
+document.getElementById("eye1").style.display="none"
+document.getElementById("eye2").style.display="none"
+document.getElementById("disimg").src=src
+}, 495)
+
+setTimeout(() => {
+  document.getElementById("disimg").style.animationName="fade"
+document.getElementById("disimg").style.animationDelay="0s"
+document.getElementById("disimg").style.animationDuration="0.5s" 
+document.getElementById("eye1").style.animationName="fade2"
+document.getElementById("eye1").style.animationDelay="0s"
+document.getElementById("eye1").style.animationDuration="0.9s"
+document.getElementById("eye2").style.animationName="fade2"
+document.getElementById("eye2").style.animationDelay="0s"
+document.getElementById("eye2").style.animationDuration="0.9s" 
+}, 3000);
+
+setTimeout(() => {
+  document.getElementById("disimg").src=""
+  document.getElementById("eye1").style.display="block"
+document.getElementById("eye2").style.display="block" 
+}, 3495);
+ }
+
+
+document.getElementById("chatarea").addEventListener("dblclick", ()=>{
+hide()
+})
+document.getElementById("chatarea").addEventListener("drag", ()=>{
+  micon=true; document.getElementById("sleepscreen").style.display="block"; player.pause(); document.getElementById("sleepscreen").style.animationName="transistion3";
+  speak2(); start=true
+})
+
+function setimg2(event) {
+  let valuemm = URL.createObjectURL(event.target.files[0])
+document.getElementById("pfp").src= valuemm
+document.getElementById("pfpsave").src= valuemm
+document.getElementById("pfpsave").style.display="none"
+// Save
+const img = document.getElementById("pfpsave");
+img.onload = function () {
+const canvas = document.createElement("canvas");
+canvas.width = img.width;
+canvas.height = img.height;
+const ctx = canvas.getContext("2d");
+ctx.drawImage(img, 0, 0);
+const dataURL = canvas.toDataURL("image/png");
+localStorage.setItem("savedpfpimage", dataURL);
+}
+console.log("saved image 5264")
+}
+if(localStorage.getItem("savedpfpimage")!=null){   
+  document.getElementById("pfp").src=localStorage.getItem("savedpfpimage")
+
+}
+function setimg3(event) {
+  let valuemm = URL.createObjectURL(event.target.files[0])
+document.getElementById("largepfp").src= valuemm
+document.getElementById("pfpsave").src= valuemm
+document.getElementById("pfpsave").style.display="none"
+// Save
+const img = document.getElementById("pfpsave");
+img.onload = function () {
+const canvas = document.createElement("canvas");
+canvas.width = img.width;
+canvas.height = img.height;
+const ctx = canvas.getContext("2d");
+ctx.drawImage(img, 0, 0);
+const dataURL = canvas.toDataURL("image/png");
+localStorage.setItem("savedpfpimage", dataURL);
+}
+console.log("saved image 5264")
+}
+if(localStorage.getItem("astro-usernamedata")==null){  document.getElementById("setscreen").style.display="flex"}
+document.getElementById("setdone").addEventListener("click", ()=>{
+  document.getElementById("setscreen").style.display="none"
+  localStorage.setItem("astro-usernamedata", document.getElementById("namesinput").value)
+ setTimeout(() => {
+  location.reload()
+ }, 1000); 
+})
+
+document.getElementById("nbastro").innerHTML=localStorage.getItem("astro-usernamedata")
+document.getElementById("nbastro1").innerHTML=localStorage.getItem("astro-usernamedata")
+let key = ""
+let key2 = ""
+window.addEventListener("keypress", (event)=>{
+
+ key = event.key
+console.log(key)
+if(key == " " && key2==" " && document.getElementById("chat").value==""){ document.getElementById("mic").click()
+  key=""
+key2=""
+}
+else{ key2 = event.key}
+
+})
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/astro/sw.js').then(
+      registration => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      },
+      err => {
+        console.log('Service Worker registration failed:', err);
+      }
+    );
+  });
+}
