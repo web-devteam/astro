@@ -55,7 +55,7 @@ align-items: center;
     align-items: center;
     width: 400px;
     height: 60px;
-    background-image: linear-gradient(to right, rgb(16, 92, 255), rgba(251, 35, 111, 0.961));
+    background-image: linear-gradient(to right, rgb(0, 106, 255), rgba(250, 42, 129, 0.961));
 }
 #tile{
     font-size: 2.5rem;
@@ -96,7 +96,7 @@ margin-left: 50px;
     width: 100px;
     height: 30px;
     color: white;
-    background-color: rgb(31, 49, 250);
+   background-image: linear-gradient(to right, rgb(31, 73, 250), rgb(31, 133, 250));
     border: 0;
     border-radius: 20px;
     margin-top: 50px;
@@ -274,7 +274,7 @@ justify-content: center;
     width: 100px;
     height: 30px;
     color: white;
-    background-color: rgb(31, 49, 250);
+   background-image: linear-gradient(to right, rgb(31, 73, 250), rgb(31, 133, 250));
     border: 0;
     border-radius: 20px;
     margin-top: 30px;
@@ -307,17 +307,19 @@ overflow-y: scroll;
 }
 #musicadd{
     color: white;
-    background-color: rgb(31, 49, 250);
+    background-color: rgb(31, 82, 250);
     border: 0;
 width: 48px;
-height: 42px;
+height: 48px;
 border-radius: 50%;
 bottom: 60px;
 text-align: center;
 font-weight: bold;
-font-size: 2rem;
-padding-top: 5px;
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-size: 2.5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: sans-serif;
 right: 20px;
     position: absolute;
 }
@@ -772,7 +774,7 @@ justify-content: center;
     width: 100px;
     height: 30px;
     color: white;
-    background-color: rgb(31, 49, 250);
+    background-image: linear-gradient(to right, rgb(31, 73, 250), rgb(31, 133, 250));
     border: 0;
     border-radius: 20px;
     margin-top: 30px;
@@ -839,7 +841,7 @@ margin-left: 80px;
     width: 100px;
     height: 30px;
     color: white;
-    background-color: rgb(31, 49, 250);
+ background-image: linear-gradient(to right, rgb(31, 73, 250), rgb(31, 133, 250));
     border: 0;
     border-radius: 20px;
     margin-top: 40px;
@@ -852,7 +854,7 @@ margin-left: 80px;
     width: 100px;
     height: 30px;
     color: white;
-    background-color: rgb(31, 49, 250);
+ background-image: linear-gradient(to right, rgb(31, 73, 250), rgb(31, 133, 250));
     border: 0;
     border-radius: 20px;
     margin-top: 50px;
@@ -887,7 +889,7 @@ margin-left: 80px;
     width: 100px;
     height: 30px;
     color: white;
-    background-color: rgb(31, 49, 250);
+    background-image: linear-gradient(to right, rgb(31, 73, 250), rgb(31, 133, 250));
     border: 0;
     border-radius: 20px;
     margin-top: 50px;
@@ -1047,7 +1049,7 @@ flex-direction: column;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    box-shadow: 5px 5px 5px rgba(52, 52, 52, 0.856);
+    box-shadow: 5px 4px 5px rgba(52, 52, 52, 0.822);
 }
 #timervalue2s{height: 30px; 
     width: 30px; 
@@ -1248,7 +1250,7 @@ text-align: center;
     height: 50px;
     align-items: center;
     justify-content: center;
-margin-left: 50px;
+margin-left: 5px;
 display: flex;
 }
 #eye1{
@@ -1281,8 +1283,15 @@ margin-left: 50px;
 display: flex;
 
 }
-#nbastro{
+#nbastro1{
     margin-left: 20px;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#nbastro{
+    margin-left: -5px;
+    font-size: 19px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #version{
@@ -1898,7 +1907,7 @@ color: white;
 
 background-color: rgb(72, 68, 68);
 width: 220px;
-font-size: 16px;
+font-size: 13px;
 height: 30px;
 position: fixed;
 right: 0px;
@@ -1922,7 +1931,7 @@ margin-top: 0px;
 }
 #settingsbox{
 width: 320px;
-height: 250px;
+height: 300px;
 overflow-y: scroll;
 
 }
@@ -3442,4 +3451,57 @@ margin-bottom: 40px;
 #top{width: 500px;}
 #closesb{margin-left: 150px;}
 }
+}
+@keyframes fade {
+0%{
+opacity: 100%;
+}
+100%{
+opacity: 0%;
+}
+}
+@keyframes fade2 {
+0%{
+opacity: 0%;
+}
+100%{
+opacity: 100%;
+}
+}
+#setscreen{
+width: 100%;
+height: 100%;
+background-color: rgb(36, 37, 38);
+position: fixed;
+top: 0;
+left: 0;
+display: none;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+row-gap: 30px;
+}
+#largepfp{
+width: 180px;
+height: 180px;
+border: 1px solid white;
+border-radius: 50%;
+margin-top: 70px;
+}
+#setdone{
+width: 160px;
+height: 32px;
+background-color: #3e5eff;
+color: white;
+border-radius: 5px;
+border: 0;
+margin-top: 30px;
+}
+#namesinput{
+width: 300px;
+height: 35px;
+border: 2px solid white;
+border-radius: 8px;
+font-size: 15px;
+padding-left: 10px;
 }
