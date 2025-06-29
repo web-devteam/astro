@@ -915,6 +915,8 @@ mic.addEventListener("click", speak)
 document.getElementById("micbtn").addEventListener("click", ()=>{start=true; speak2(); player.pause()})
 let ibm = ""
 function speak2 (){
+let inter = setInterval(() => {
+
   if(tipsarray[7]==0){document.getElementById("tip").style.display="flex"; document.getElementById("tiptxt").innerHTML="tap the mic icon to reconnect if the voice recognition stops listening, tap the clock icon to switch between the focus session and voice mode"; document.getElementById("tip").style.right="50px"; document.getElementById("tip").style.top="100px"
   setTimeout(() => {
     document.getElementById("tip").style.display="none"
@@ -922,33 +924,34 @@ function speak2 (){
     tipsarray[7]=1; localStorage.setItem("tips", tipsarray)}
 
 
-  let voice = new window.webkitSpeechRecognition;
-voice.onstart = function f3(){console.log("speak"); on=true; document.getElementById("listening").style.backgroundColor="rgb(81, 255, 0)"};
-voice.onend = function f4(){console.log("stop"); on=false; document.getElementById("listening").style.backgroundColor="orange";
-setTimeout(()=>{if(start==true){window.speechSynthesis.cancel();voice.start(); voice.continuous=true}
-else{voice.stop()}}, 3500)};
-voice.continuous=true
-let index = -1
-    voice.onresult = function(event) {
-      index=index+1
-      var transcript = event.results[0][0].transcript;
-      console.log(transcript);
-      voice.stop()
-     if(transcript.slice(0, 5)=="astro" ){
-    text=transcript.slice(5, )
-    console.log(transcript.slice(0, 5))
-    console.log(text)
-    f2()
-     }
-        console.log(transcript.slice(0, 5)) };
-       
-    
-        voice.addEventListener("result", ()=>{
-          
-        })
 
+    let voice = new window.webkitSpeechRecognition;
+voice.continuous=true
+voice.onstart = function f3(){console.log("speak"); on=true; document.getElementById("listening").style.backgroundColor="rgb(81, 255, 0)"};
+voice.onend = function f4(){console.log("stop"); on=false; document.getElementById("listening").style.backgroundColor="orange"};
+
+      voice.onresult = function(event) {
+        var transcript = event.results[0][0].transcript;
+        console.log(transcript);
+text=transcript
+if(text!=""){f2()}
+ 
+     }   
+  
+setTimeout(() => {
+  voice.stop()
+}, 5000);
+ 
+        console.log(text)
+      ;
 voice.start()
-  }
+
+   
+}, 6000); 
+
+document.getElementById("closebtn").addEventListener("click", ()=>{
+clearInterval(inter)
+})}
 function speak (){
 
     let voice = new window.webkitSpeechRecognition;
