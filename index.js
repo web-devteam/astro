@@ -5339,15 +5339,25 @@ else{ key2 = event.key}
 
 })
 
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/astro/sw.js').then(
-      registration => {
-        console.log('Service Worker registered with scope:', registration.scope);
-      },
-      err => {
-        console.log('Service Worker registration failed:', err);
-      }
-    );
+    navigator.serviceWorker.register('/astro/sw.js').then(reg => {
+      console.log('Service Worker registered with scope:', reg.scope);
+
+      reg.onupdatefound = () => {
+        const newWorker = reg.installing;
+        newWorker.onstatechange = () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            // New version detected
+            window.alert("New update available!");
+            // Optional: window.location.reload();
+          }
+        };
+      };
+    }).catch(err => {
+      console.error('Service Worker registration failed:', err);
+    });
   });
 }
+
