@@ -13,6 +13,7 @@ self.addEventListener('install', event => {
         return cache.addAll(allurlsToCache);
       })
   );
+   self.skipWaiting();
 });
 
 self.addEventListener('fetch', event => {
