@@ -68,10 +68,23 @@
 <div id="calculators"><div id="calcscreen"><p id="topvalue"></p><p id="bottomvalue">0</p></div><div id="kset1"><div id="row1"><p class="key" id="key1">1</p><p class="key" id="key2">2</p><p class="key" id="key3">3</p><p class="key" id="key4">4</p><p class="key" id="key+">+</p></div>  <div id="row2"><p class="key" id="key5">5</p><p class="key" id="key6">6</p> <p class="key" id="key7">7</p><p class="key" id="key8">8</p><p class="key" id="key-">-</p>  </div> <div id="row4"><p class="key" id="key9">9</p> <p class="key" id="key10">0</p><p class="key" id="key*">*</p><p class="key" id="key.">.</p><p class="key" id="key/">/</p></div><div id="row3"><p class="key" id="key%">%</p> <p class="key" id="keydel">del</p> <p class="key" id="keyclr">clr</p> <p id="keye">=</p></div> </div> 
 <div id="kset2"><div id="row1"><p class="key" id="key1">1</p><p class="key" id="key2">2</p><p class="key" id="key3">3</p><p class="key" id="key4">4</p> <p class="key" id="key5">5</p><p class="key" id="key+">+</p></div> <div id="row2"><p class="key" id="key6">6</p> <p class="key" id="key7">7</p><p class="key" id="key8">8</p> <p class="key" id="key9">9</p><p class="key" id="key10">0</p> <p class="key" id="key-">-</p></div> <div id="row4"> <p class="key" id="key*">*</p><p class="key" id="key.">.</p><p class="key" id="key/">/</p> <p class="key" id="key%">%</p> <p class="key" id="keyclr">clr</p> <p id="keye">=</p></div></div></div>
 <div id="settings"><div id="settingsbox"><div id="sminidiv"><p id="settingsp">username</p><label for="username">name</label><input id="username" type="text"></div><div id="sminidiv2"><p id="settingsp">schedule</p><label for="scheduletime">time</label><input id="scheduletime" placeholder="min\hour" type="text"><p id="settingsp">schedule format</p><label for="scheduelopt1">checklist format</label><input id="scheduelopt1" name="radio" type="radio"><br><br><label for="scheduelopt2">one click format</label><input id="scheduelopt2" name="radio" type="radio"></div><div id="sminidiv3"><p id="settingsp">alarm</p><label for="alarmstset">snooze time</label><input id="alarmstset" placeholder="min" type="number"><br><br><label for="alarmsoundset">sound</label><select id="alarmsoundset"><option value="alarm 1">alarm 1</option><option value="alarm 2">alarm 2</option><option value="alarm 3">alarm 3</option><option value="alarm 4">alarm 4</option><option value="alarm 5">alarm 5</option></select></div>
-<div id="sminidiv4"><p id="settingsp">reminder</p><label for="reminderdurset">duration</label><input id="reminderdurset" placeholder="min" type="number"><br><br><label for="remindersoundset">sound</label><select id="remindersoundset"><option value="sound 1">sound 1</option><option value="sound 2">sound 2</option><option value="sound 3">sound 3</option><option value="sound 4">sound 4</option><option value="sound 5">sound 5</option></select></div><div id="sminidiv5"><p id="settingsp">astro voice</p><label class="voiceonlabel" for="voiceon" id="settingsp">turn off</label><input id="voiceon" value="0" max="1" type="range"></div><div id="sminidiv6"><p id="settingsp">battery notification</p><label for="battfullset">full level</label><input id="battfullset" placeholder="%" type="number"><br><br><label for="battlowset">low level</label><input id="battlowset" placeholder="%" type="number"></div><div id="sminidiv7"><p id="settingsp">email, phone and app</p><button id="elogbtn">open email log</button><button id="plogbtn">open phone log</button><button id="alogbtn">open apps log</button></div><div id="sminidiv"><p id="settingsp">background</p><input id="bgfile" accept="image/*" onchange="setimg(event)" type="file"></div><div id="sminidiv"><p id="settingsp">profile</p><input id="bgfile2" accept="image/*" onchange="setimg2(event)" type="file"></div><button id="save2">reset</button></div>
+<div id="sminidiv4"><p id="settingsp">reminder</p><label for="reminderdurset">duration</label><input id="reminderdurset" placeholder="min" type="number"><br><br><label for="remindersoundset">sound</label><select id="remindersoundset"><option value="sound 1">sound 1</option><option value="sound 2">sound 2</option><option value="sound 3">sound 3</option><option value="sound 4">sound 4</option><option value="sound 5">sound 5</option></select></div><div id="sminidiv5"><p id="settingsp">astro voice</p><label class="voiceonlabel" for="voiceon" id="settingsp">turn off</label><input id="voiceon" value="0" max="1" type="range"></div><div id="sminidiv6"><p id="settingsp">battery notification</p><label for="battfullset">full level</label><input id="battfullset" placeholder="%" type="number"><br><br><label for="battlowset">low level</label><input id="battlowset" placeholder="%" type="number"></div><div id="sminidiv7"><p id="settingsp">email, phone and app</p><button id="elogbtn">open email log</button><button id="plogbtn">open phone log</button><button id="alogbtn">open apps log</button></div><div id="sminidiv"><p id="settingsp">background</p><input id="bgfile" accept="image/*" onchange="setimg(event)" type="file"></div><div id="sminidiv"><p id="settingsp">profile</p><input id="bgfile2" accept="image/*" onchange="setimg2(event)" type="file"></div>
+<div id="sminidiv8"><p id="settingsp">search highlight</p><label for="preference1">entertainment</label><input style="margin-left: 20px;" type="checkbox" name="preference1" class="preference"><label for="preference2">gaming</label><input style="margin-left: 20px;" type="checkbox" name="preference2" class="preference"><label for="preference3">tech</label><input style="margin-left: 20px;" type="checkbox" name="preference3" class="preference"><label for="preference4">sport</label><input style="margin-left: 20px;" type="checkbox" name="preference4" class="preference"><label for="preference5">fashion</label><input style="margin-left: 20px;" type="checkbox" name="preference5" class="preference"><label for="preference6">music</label><input style="margin-left: 20px;" type="checkbox" name="preference6" class="preference"></div><div id="sminidiv"><p id="settingsp">theme</p><label for="themecolor1">default</label><input type="color" name="themecolor1" id="themecolor1" style="margin-left: 10px;"><label style="margin-left: 25px;" for="themecolor2">abstract</label><input type="color" style="margin-left: 10px;" name="themecolor2" id="themecolor2"></div>
+<div id="sminidiv9"><label for="preference1" style="margin-top: 20px;">apply to chatbox</label><input style="margin-left: 20px; " type="checkbox" name="preference1" class="preference"><label for="preference2">apply to highlight</label><input style="margin-left: 20px;" type="checkbox" name="preference2" class="preference"><label for="preference3">apply to menu</label><input style="margin-left: 20px;" type="checkbox" name="preference3" class="preference"><p id="colorreset">reset...</p></div><button id="save2">reset</button></div>
 </div>
 </div>
-
+<div id="sethighlight">
+<div id="shleft"><input placeholder="Highlight" type="text" id="shname"><input placeholder="date" type="text" id="shdate"><p style="margin: 0;">link to</p>
+<div style="display: flex;"><div style="display: flex; flex-direction: column; width: 200px; justify-content: center;"><input name="checkboxs" type="checkbox" class="shcheckbox1"><label >music</label><input type="checkbox" name="checkboxs" class="shcheckbox1"><label >note</label>
+<input type="checkbox" class="shcheckbox1"><label >timer</label><input type="checkbox" class="shcheckbox1"><label >scheduel</label>
+</div><div style="display: flex; flex-direction: column; width: 200px;"><input type="checkbox" class="shcheckbox1"><label >voicemode</label><input type="checkbox" class="shcheckbox1"><label >focus</label>
+<input type="checkbox" class="shcheckbox1"><label >musicmode</label><input type="checkbox" class="shcheckbox1"><label >reminder</label></div></div>
+<div><button id="shbtn1">create alarm</button><button id="shbtn2">create reminder</button><button id="shbtn3">create note</button></div>
+<div><label for="shlinkapp" style="margin-right: 20px;" >link app</label><input name="shlinkapp" placeholder="app URLscheme" type="text" id="shlinkapp"></div>
+<button id="shadd">add</button></div>
+<div id="shright"></div>
+<p id="shcnl">x</p>
+</div>
 <div id="sleepscreen">
 <p id="listening"></p>
 <div id="voicebar"><img id="closebtn" src="close_FILL0_wght400_GRAD0_opsz24.png" alt=""><img id="micbtn" src="mic_FILL0_wght400_GRAD0_opsz24.png" alt=""><img id="focusbtn" src="alarm_FILL0_wght400_GRAD0_opsz24.png" alt=""></div>
@@ -84,6 +97,22 @@
 <div id="focustabs"><h2 id="preftab">focus</h2><h2 id="musictab">music</h2><h2 id="infotab">info</h2></div>
 <div id="musiccontrol"><p id="mcback">◀</p><p id="mcplay">⏸</p><p id="mcnext">▶</p></div>
 <p id="fcclose">close</p>
+</div>
+<div id="musicscreenblank"></div>
+<div id="musicscreencolor"></div>
+<div id="musicscreen">
+
+<div id="cover"><img src="76224fcfb17f74c5437f24376a361e25.jpg" id="musicpng" alt=""><audio src="" controls id="mscontrol"><p>click to change cover</p></audio><input type="file" id="coverfile" style="position: fixed; display: none;" accept="image/*" onchange="imageacc(event)"></div>
+<div id="musiclist"><div id="mlup"><h5 style="margin: 0px; font-family: cursive; margin-left: 50px; font-weight: lighter;" id="musictxt">queue</h5><p id="mssongname">no song playing </p><input  type="text" placeholder="search" id="mssearch"></div>
+<div id="musiclistbx" style="width: 100%; height: 100%;"></div><div id="musicqueuebx" style="width: 100%; height: 100%; display: none;"></div>
+<div id="musicplaylistbx" style="width: 100%; height: 100%; display: none;"><div><input id="playlisttitle" style="margin-top: 10px; margin-right: 15px; margin-left: 15px; background-color: transparent;border: 0px; border-bottom: 1px solid black;" type="text" placeholder="playlist title"><button id="playlistaddbtn">add</button></div></div><div id="musicsearchbx" style="width: 100%; height: 100%; display: none;"></div><div id="musicuploadbx" style="display: none; width: 100%; height: 100%;"><input id="uploadbtn" type="file" multiple accept="audio/*" onchange="upload(event)"></div>
+<div id="auxitems"><p style="margin: 0;" id="removetxt">remove</p><p style="margin: 0;" id="queuetxt">add to queue</p><p style="margin: 0;" id="playlisttxt">add to playlist</p><select style="margin: 0;"  id="playlistsel"><option value="none">select playlist</option></select></div></div>
+<div id="musicbar">
+<progress id="timeline" value="10" max="150"><input type="range"></progress>
+<div id="msleft"><img src="volume_up_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" id="msvolume" alt=""><img id="msfulls" src="fullscreen_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt=""></div>
+<div id="mscenter"><img id="msback" src="skip_previous_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt=""><img id="msplay" src="play_arrow_24dp_000000_FILL0_wght400_GRAD0_opsz24 (1).png" alt=""><img id="msnext" src="skip_next_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt=""></div>
+<div id="msright"><img src="library_music_FILL0_wght400_GRAD0_opsz24.png" id="msmenu" alt=""><img src="queue_music_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" id="msqueue" alt=""><img src="playlist_play_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" id="msplaylist" alt=""><img src="graphic_eq_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" id="mschat" alt=""></div>
+</div>
 </div>
 <img src="" id="sleepsave" alt="">
 <img src="" id="pfpsave" alt="">
@@ -153,15 +182,42 @@
 </div>
 <p id="offmodetxt">offline mode activated</p>
 <div id="setscreen"><h2 style="font-size: 2.4rem;  position: absolute; top: -10px;">setup</h2><label for="qwde"><img src="" id="largepfp" alt=""></label><input type="file" style="display: none;" id="qwde" name="qwde" accept="image/*" onchange="setimg3(event)"><input placeholder="first and last name" id="namesinput" type="text"><button id="setdone">done</button></div>
+<div id="toolbar">
+<div id="tbup"><div class="tool"><img src="music_note_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt=""></div><div class="tool"><img src="do_not_disturb_on_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt=""></div><div class="tool"><img src="timer_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt=""></div></div>
+<div id="tbuptxt"><p id="linetxt">offline</p><p>do not disturb</p><p>timer</p></div>
+<div id="tbdown"><div class="tool"><img src="adjust_24dp_000000_FILL0_wght400_GRAD0_opsz24 (1).png" alt=""><select id="qtsel"><option value="quick tool">quick tool</option><option value="voicebar">voice mode</option><option value="focus">focus</option><option value="song">music</option><option value="calculator">calculator</option><option value="textto">text-to-speech</option><option value="clean">scheduel</option><option value="alarm">alarm</option><option value="games">reminder</option><option value="setting">setting</option><option value="restart">restart</option><option value="note">note</option></select></div><div class="tool"><img src="cast_connected_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt=""></div><div class="tool"><p style="font-family: sans-serif; display: none;" id="nslvl">1%</p><img id="lbimg" src="lightbulb_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt=""></div></div>
+<div id="tbdowntxt"><p>quick tool</p><p>background</p><p>night light</p></div>
+</div>
+<div id="minimode"><h1 id="mmmsg">hello</h1><span id="span1">.</span><span id="span2">.</span><span id="span3">.</span>
+<div id="mmvoice"><span id="span4">.</span><span id="span5">.</span><span id="span6">.</span></div>
+<div id="miniplayer"><img id="mmback" src="skip_previous_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt=""><img id="mmplay" src="play_arrow_24dp_000000_FILL0_wght400_GRAD0_opsz24 (1).png" alt=""><img id="mmnext" src="skip_next_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt=""></div>
+<h1 id="mmtimer">00:00:00</h1><input type="range" id="mmslider" value="0" max="1">
+<div id="mininotifi"><p id="mininotifitxt">go shopping for pluto's food</p><button id="minired"></button><button id="miniblue"></button><img src="alarm_FILL0_wght400_GRAD0_opsz24.png" id="miniimg" alt=""></div>
+<p id="mmtxt">sat 24 july <br>01:08 AM 90%</p></div>
+<p id="topbar">high-light</p>
+<div id="nightscreen"></div>
+<div id="newversion"><div id="newversionbox"><img style="width: 100%; margin-top: -100px;" src="images (8).jpg" alt="">
+    <h5 style="font-size: 16px; font-family: sans-serif; text-align: center; margin: 0px; margin-top: 20px;">update</h5>
+    <p style="text-align: center;">
+    astro version 3.3 release note </p><p>
+   <ul> <li>new highlight bar</li>
+    <li>music mode</li>
+    <li>software update</li>
+    <li>customization</li>
+    <li>mini mode</li>
+    <li>quick access</li></ul>
+</p><button id="getbtn">get</button></div></div>
 <div id="loadpage">
-    <div id="section1"><div id="line"></div><img id="displayimg" src="_68767b25-4b4b-4a41-bd28-91150c1a722b.jpg" alt=""></div>
+    <div id="section1"><div id="line"></div><img id="displayimg" alt=""></div>
     <div id="section2">    <h1 id="astro">Astro</h1>
   <p id="infotxt"></p>
-    <h2 id="motto">your personal assistant</h2>
+    <h2 id="motto">your smart workflow & productivity companion ✨</h2>
     <div id="loadbar"><p id="bar">.</p> <p id="bar2"> .</p> <p id="bar3"> .</p> <p id="bar4"> .</p></div></div>
 
-    <p id="version">new version 3.3</p>
+    <p id="version">version 3.3</p>
 </div>
+
+
 <div id="lounge">
     <div id="lounges1">
         <h1 id="loungeheader">Astro game lounge</h1>
@@ -169,6 +225,7 @@
     </div>
     <div id="lounges2"><img src="abstract-background-with-colorful-symmetric-geometric-print-vibrating-geometry-wallpaper-with-composition-repeat-rectangles-lines-horizontal-illustration-banner-design-generative-ai_9209-12059.avif" alt=""></div>
 </div>
+
 <a id="youtube" href="http://youtube.com" target="_blank"></a>
 <a id="spotify" href="http://open.spotify.com" target="_blank"></a>
 <a id="tiktok" href="http://tiktok.com" target="_blank"></a>
@@ -182,6 +239,7 @@
 <audio id="timesup" src="Wake Up.mp3"></audio>
 <audio id="remindersound" src="alarm.mp3"></audio>
 <audio id="testsound" src="alarm.mp3"></audio>
+<audio  id="silent" loop src="low-hum-14645.mp3"></audio>
 <audio id="battsound" src="livechat-129007.mp3"></audio>
 <audio id="timersound" src="Time Up.mp3"></audio>
 <div id="error">
@@ -191,9 +249,9 @@
         please try using a larger device like a pc or mobile phone to open this page
     </p>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/jsmediatags@3.9.5/dist/jsmediatags.min.js"></script>
 <script src="index.js">
+
 </script>
 </body> 
 </html>
-
