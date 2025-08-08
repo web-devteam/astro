@@ -1,3 +1,8 @@
+setTimeout(() => {
+  document.getElementById("loadpage").style.animationName="transistion"
+  document.getElementById("section1").style.animationName="transistion4"
+  document.getElementById("section2").style.animationName="transistion4"
+}, 9000);
 setTimeout(function1, 10000);
 function function1 (){
 document.getElementById("loadpage").style.display="none" ;
@@ -164,12 +169,14 @@ let battlevfull = ""
 let fulllev = ""
 let battlevlow = ""
 let lowlev = ""
+let musicmode=false
 let voiceon = ""
 let applog = ""
 let remindersound = ""
 let alarmview = ""
 let duration = ""
 let durationvalue = ""
+let donotdisturb = false
 let alarmsound = ""
 let snoozetime = ""
 let snoozevalue=""
@@ -223,17 +230,33 @@ console.log(date2)
 console.log(value3)
 let formertxt = ""
 
+let defaultcolor = localStorage.getItem("defaultcolor")
+let abstractcolor = localStorage.getItem("abstractcolor")
+if(defaultcolor==null){localStorage.setItem("defaultcolor", "#106ae8")
+  localStorage.setItem("abstractcolor", "#19df80")
+}
+document.getElementById("themecolor1").value=defaultcolor
+document.getElementById("themecolor2").value=abstractcolor
+document.getElementById("colorreset").addEventListener("click", ()=>{
+localStorage.setItem("defaultcolor", "#106ae8")
+  localStorage.setItem("abstractcolor", "#19df80")
+document.getElementById("themecolor1").value=defaultcolor
+document.getElementById("themecolor2").value=abstractcolor
+})
 function f2 (){
+
     let chat = document.createElement("p");
-    
     let box = document.createElement("section");
     let box2 = document.createElement("article");
     reply = document.createElement("h6");
 let chatarea = document.getElementById("chatarea");
 if(on==false){chat.innerText=chattext.value.toLowerCase().padEnd().padStart().replace(",", "").replace("!", "")}
 else{chat.innerText=text.toLowerCase().padEnd().padStart().replace(",", "").replace("!", "");}
+if(localStorage.getItem("applychat")=="true"){box.style.backgroundColor=defaultcolor}
 box.appendChild(chat)
 box2.appendChild(reply)
+box.style.marginLeft="100px"
+box.style.minHeight="60px"
 chatarea.appendChild(box)
 chatarea.appendChild(box2);
 let chat2 = chat.innerText;
@@ -535,7 +558,7 @@ else if(chat.innerText=="flip a coin"){  let coinv = Math.floor(Math.random() *2
 else if(chat.innerText=="roll a dice"){  let dicev = Math.floor(Math.random() *7);  dice = dicev;  console.log(dicev); reply.innerText=dice}
 else if(chat2.includes("set an alarm for")){reply.innerHTML="okay"; acceptinput=true; alarm(); fade("alarm_FILL0_wght400_GRAD0_opsz24.png")}
 else if(chat2.includes("remind me to")){reply.innerHTML="okay"; acceptinput=true; reminder(); fade("notifications_FILL0_wght400_GRAD0_opsz24.png")}
-else if(chat.innerText=="add note" || chat.innerText=="add Note"){reply.innerHTML="okay"; show(); document.getElementById("notes").style.display="block";
+else if(chat.innerText=="add note" || chat.innerText=="add Note"){reply.innerHTML="okay"; show(); document.getElementById("notes").style.display="block"; document.getElementById("add4").click()
 document.getElementById("calculators").style.display="none";
 document.getElementById("alarmcircle").style.display="none";
 document.getElementById("reminders").style.display="none";
@@ -784,26 +807,26 @@ else if(statement=="describeme"){reply.innerHTML= "good, thanks for asking"}
  else if(statement=="meclosetimer"){reply.innerHTML="okay"; document.getElementById("timer").style.display="none"}
  else if(statement=="userclosetimer"){reply.innerHTML="okay"; document.getElementById("timer").style.display="none"}
  else if(statement=="activatevoicemode"){reply.innerHTML="voice mode activated"; micon=true; document.getElementById("sleepscreen").style.display="block"; document.getElementById("sleepscreen").style.animationName="transistion3";
- speak2(); start=true; player.pause()}
+ speak2(); start=true; document.getElementById("mmvoice").style.display="flex"}
  else if(statement=="meactivatevoicemode"){reply.innerHTML="voice mode activated"; micon=true; document.getElementById("sleepscreen").style.display="block"; document.getElementById("sleepscreen").style.animationName="transistion3";
- speak2(); start=true; player.pause()}
+ speak2(); start=true; document.getElementById("mmvoice").style.display="flex"}
  else if(statement=="useractivatevoicemode"){reply.innerHTML="voice mode activated"; micon=true; document.getElementById("sleepscreen").style.display="block"; document.getElementById("sleepscreen").style.animationName="transistion3";
- speak2(); start=true; player.pause()}
+ speak2(); start=true; document.getElementById("mmvoice").style.display="flex"}
  else if(statement=="deactivatevoicemode"){reply.innerHTML="voice mode deactivated"; micon=false; setTimeout(function sleeps (){document.getElementById("sleepscreen").style.display="none"}, 1000);
- document.getElementById("sleepscreen").style.animationName="transistion2";start=false;   circle.style.display="none"}
+ document.getElementById("sleepscreen").style.animationName="transistion2";start=false;   circle.style.display="none"; document.getElementById("mmvoice").style.display="none"}
  else if(statement=="medeactivatevoicemode"){reply.innerHTML="voice mode deactivated"; micon=false; setTimeout(function sleeps (){document.getElementById("sleepscreen").style.display="none"}, 1000);
- document.getElementById("sleepscreen").style.animationName="transistion2";start=false;   circle.style.display="none"}
+ document.getElementById("sleepscreen").style.animationName="transistion2";start=false;   circle.style.display="none"; document.getElementById("mmvoice").style.display="none"}
  else if(statement=="userdeactivatevoicemode"){reply.innerHTML="voice mode deactivated"; micon=false; setTimeout(function sleeps (){document.getElementById("sleepscreen").style.display="none"}, 1000);
- document.getElementById("sleepscreen").style.animationName="transistion2";start=false; circle.style.display="none"}
+ document.getElementById("sleepscreen").style.animationName="transistion2";start=false; circle.style.display="none"; document.getElementById("mmvoice").style.display="none"}
  else if(statement=="username"){reply.innerHTML= "it's nice to meet you"}
  else if(statement=="hiusername"){reply.innerHTML= "hi, it's nice to meet you"}
  else if(statement=="hi"+value1+reference+day){reply.innerHTML= "hi "+username.value; situ="hi";}
  else if(statement=="hi"){tag(); reply.innerHTML="hello"+" "+username.value+" "+question; conti=true; situ="hi"; formerreply=reply.innerHTML }
  
 else if(chat.innerText=="activate voice mode" || chat.innerText=="voice mode on" || chat.innerText=="turn on voice mode"){reply.innerHTML="voice mode activated"; micon=true; document.getElementById("sleepscreen").style.display="block"; player.pause(); document.getElementById("sleepscreen").style.animationName="transistion3";
-speak2(); start=true; player.pause()}
+speak2(); start=true; document.getElementById("mmvoice").style.display="flex"}
 else if(chat.innerText=="voice mode off" || chat.innerText=="close" || chat.innerText=="turn off voice mode" || chat.innerText=="deactivate voice mode" ){reply.innerHTML="voice mode deactivated"; micon=false; setTimeout(function sleeps (){document.getElementById("sleepscreen").style.display="none"}, 1000);
-document.getElementById("sleepscreen").style.animationName="transistion2";start=false; circle.style.display="none"}
+document.getElementById("sleepscreen").style.animationName="transistion2";start=false; circle.style.display="none"; document.getElementById("mmvoice").style.display="none"}
 
 
 else if(chat2.match(/\bgood\b/)){reply.innerHTML="that's nice to here"}
@@ -845,7 +868,7 @@ msg.voice = voices[6];
 msg.text = reply.innerText;
 window.speechSynthesis.speak(msg);} 
 console.log(situ)
-
+document.getElementById("mmmsg").innerHTML=reply.innerHTML
 };
 
 
@@ -951,22 +974,33 @@ voice.start()
 
 document.getElementById("closebtn").addEventListener("click", ()=>{
 clearInterval(inter)
+ document.getElementById("mmvoice").style.display="none"
 })}
 function speak (){
 
     let voice = new window.webkitSpeechRecognition;
-
+document.getElementById("mmmsg").style.display="none"
+document.getElementById("span1").style.display="block"
+document.getElementById("span2").style.display="block"
+document.getElementById("span3").style.display="block"
 voice.start()
 voice.onstart = function f3(){console.log("speak"); on=true;};
-voice.onend = function f4(){console.log("stop"); on=false;};
+voice.onend = function f4(){console.log("stop"); on=false;
+document.getElementById("mmmsg").style.display="block"
+document.getElementById("span1").style.display="none"
+document.getElementById("span2").style.display="none"
+document.getElementById("span3").style.display="none"};
 
      voice.onresult = function(event) {
        var transcript = event.results[0][0].transcript;
       console.log(transcript);
         text = transcript;
         console.log("text")
+
+f2()
+         console.log(on)
+
       };
-      voice.addEventListener("result", ()=>{f2()})
 
 };
 
@@ -1660,8 +1694,8 @@ let array = alarmcontent[index].split("|")
   box2.appendChild(reply)
   chatarea.appendChild(box2);
   reply.innerHTML="your "+array[0]+" alarm is active";
-    let notify = new Notification("alarm", {body: array2[1], icon:"computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-44413c43e2dd5f4f467181772ee8a7d5.png"})
-    setTimeout(()=>{notify.close()}, 4000)
+  if(donotdisturb==false){   let notify = new Notification("alarm", {body: array2[1], icon:"computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-44413c43e2dd5f4f467181772ee8a7d5.png"})
+    setTimeout(()=>{notify.close()}, 4000)}
   }
 
   let value1 = alarmtime.split(":")
@@ -1680,7 +1714,7 @@ reply.innerHTML="you missed your "+array[0]+" alarm";
   timing=true; search=false; 
   arang[index]="true"
 localStorage.setItem("arang", arang)
-let notify = new Notification("alarm", {body: "missed alarm : "+array[1], icon:"computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-44413c43e2dd5f4f467181772ee8a7d5.png"})
+if(donotdisturb==false){ let notify = new Notification("alarm", {body: "missed alarm : "+array[1], icon:"computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-44413c43e2dd5f4f467181772ee8a7d5.png"})}
   document.getElementById("snoozebox").style.display="flex";
   
   document.getElementById("timesup").play()
@@ -2278,7 +2312,7 @@ let array = remindercontent[index].split("|")
     setTimeout(()=>{document.getElementById("ractivebox").style.display="none";}, 120000)
     setInterval(()=>{ if(document.getElementById("ractivebox").style.display=="flex"){document.getElementById("remindersound").play()}}, document.getElementById("remindersound").duration)
     document.getElementById("ractivetxt").innerHTML=array2[2]
-    let notify = new Notification("reminder", {body: array[2], icon:"5bfc1c0ea645f-2723436d0f517f1d2e2b58510a7b6a72.png"})
+   if(donotdisturb==false){  let notify = new Notification("reminder", {body: array[2], icon:"5bfc1c0ea645f-2723436d0f517f1d2e2b58510a7b6a72.png"})}
     if(array2[3]=="none"){document.getElementById("ractivecl").style.display="none"}
     else{document.getElementById("ractivecl").addEventListener("click", ()=>{
    // console.log(array2[3])
@@ -2324,7 +2358,7 @@ reply.innerHTML="remember to "+array[2]+" "+username.value;
   setTimeout(()=>{document.getElementById("ractivebox").style.display="none";}, durationvalue)
   setInterval(()=>{ if(document.getElementById("ractivebox").style.display=="flex"){document.getElementById("remindersound").play()}}, document.getElementById("remindersound").duration)
   document.getElementById("ractivetxt").innerHTML="missed reminder : "+array[2]
-  let notify = new Notification("reminder", {body: "missed reminder : "+array[2], icon:"5bfc1c0ea645f-2723436d0f517f1d2e2b58510a7b6a72.png"})
+ if(donotdisturb==false){  let notify = new Notification("reminder", {body: "missed reminder : "+array[2], icon:"5bfc1c0ea645f-2723436d0f517f1d2e2b58510a7b6a72.png"})}
   if(array[3]=="none"){document.getElementById("ractivecl").style.display="none"}
   else{document.getElementById("ractivecl").style.display="block"; document.getElementById("ractivecl").addEventListener("click", ()=>{
  // console.log(array[3])
@@ -2619,8 +2653,7 @@ for (let index = 0; index < document.getElementById("ainput5").files.length; ind
   let song = document.createElement("p")
   song.id="songcreate";
   let object = event.target.files[index]
- if(object.name.includes(",")){let point = object.name.indexOf(",")-1
-  names[pre]=object.name.slice(0, point)}
+ if(object.name.includes(",")){  names[pre]=object.name.replaceAll(",", ".")}
   else{names[pre] = object.name}
  song.innerText=names[pre]; console.log(names)
  array[pre]=URL.createObjectURL(event.target.files[index])
@@ -2970,6 +3003,7 @@ document.getElementById("breaktxt").innerHTML="break ends in : "+(brlength+1)+"m
 document.getElementById("fcelapsedtxt").innerHTML="break ends in : "+(brlength+1)+" min"
    document.getElementById("fcltime").innerHTML=brlength+1
 document.getElementById("focustime").innerHTML=brlength+" min, "+sec12+" sec"
+
 let gap2 = initialgap2-(brlength+1)
 let value = gap2
 document.getElementById("fcpro").value=value
@@ -2998,7 +3032,8 @@ if(gap==-1 && br==0){  document.getElementById("focustime").innerHTML="session e
 document.getElementById("timeremaining").innerHTML="end"
 document.getElementById("breaktxt").innerHTML="no breaks"
 document.getElementById("focusheader").innerHTML="focus mode"
-  clearInterval(finter2)}
+  clearInterval(finter2)
+}
 clearInterval(finter1)
 document.getElementById("fcelapsedtxt").innerHTML="focus session ended"
 }
@@ -4012,8 +4047,8 @@ box2.appendChild(reply)
 chatarea.appendChild(box2);
 reply.innerHTML="your "+array[0]+" alarm is active";
 array[0]="null"
-  let notify = new Notification("alarm", {body: array[1], icon:"computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-44413c43e2dd5f4f467181772ee8a7d5.png"})
-  setTimeout(()=>{notify.close()}, 4000)
+ if(donotdisturb==false){  let notify = new Notification("alarm", {body: array[1], icon:"computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-44413c43e2dd5f4f467181772ee8a7d5.png"})
+  setTimeout(()=>{notify.close()}, 4000)}
 }
 let value1 = alarmtime.split(":")
 value1=value1[0]+value1[1]
@@ -4031,7 +4066,7 @@ reply.innerHTML="you missed your "+array[0]+" alarm";
   timing=true; search=false; 
   arang[index]="true"
 localStorage.setItem("arang", arang)
-let notify = new Notification("alarm", {body: "missed alarm : "+array[1], icon:"computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-44413c43e2dd5f4f467181772ee8a7d5.png"})
+if(donotdisturb==false){ let notify = new Notification("alarm", {body: "missed alarm : "+array[1], icon:"computer-icons-alarm-clocks-clip-art-clock-icons-no-attribution-44413c43e2dd5f4f467181772ee8a7d5.png"})}
   document.getElementById("snoozebox").style.display="flex";
   
   document.getElementById("timesup").play()
@@ -4334,7 +4369,7 @@ document.getElementById("ractivebox").style.display="flex";
 setTimeout(()=>{document.getElementById("ractivebox").style.display="none";}, durationvalue)
 setInterval(()=>{ if(document.getElementById("ractivebox").style.display=="flex"){document.getElementById("remindersound").play()}}, document.getElementById("remindersound").duration)
 document.getElementById("ractivetxt").innerHTML=array[2]
-let notify = new Notification("reminder", {body: array[2], icon:"5bfc1c0ea645f-2723436d0f517f1d2e2b58510a7b6a72.png"})
+if(donotdisturb==false){ let notify = new Notification("reminder", {body: array[2], icon:"5bfc1c0ea645f-2723436d0f517f1d2e2b58510a7b6a72.png"})}
 if(array[3]=="none"){document.getElementById("ractivecl").style.display="none"}
 else{document.getElementById("ractivecl").addEventListener("click", ()=>{
 console.log(array[3])
@@ -4383,7 +4418,7 @@ reply.innerHTML="remember to "+array[2]+" "+username.value;
   setTimeout(()=>{document.getElementById("ractivebox").style.display="none";}, durationvalue)
   setInterval(()=>{ if(document.getElementById("ractivebox").style.display=="flex"){document.getElementById("remindersound").play()}}, document.getElementById("remindersound").duration)
   document.getElementById("ractivetxt").innerHTML="missed reminder : "+array[2]
-  let notify = new Notification("reminder", {body: "missed reminder : "+array[2], icon:"5bfc1c0ea645f-2723436d0f517f1d2e2b58510a7b6a72.png"})
+ if(donotdisturb==false){ let notify = new Notification("reminder", {body: "missed reminder : "+array[2], icon:"5bfc1c0ea645f-2723436d0f517f1d2e2b58510a7b6a72.png"})}
   if(array[3]=="none"){document.getElementById("ractivecl").style.display="none"}
   else{document.getElementById("ractivecl").style.display="block"; document.getElementById("ractivecl").addEventListener("click", ()=>{
   console.log(array[3])
@@ -4960,6 +4995,41 @@ else if(window.innerHeight>430){
 if(window.innerWidth<330){
   document.getElementById("error").style.display="flex"
 }
+if(window.innerHeight<180){
+  document.getElementById("error").style.display="none"
+  document.getElementById("txtview").style.display="none"
+document.getElementById("navbarleft").style.display="none"
+document.getElementById("minimode").style.display="flex"
+if(document.getElementById("audio4").paused==false){document.getElementById("miniplayer").style.display="flex"
+document.getElementById("mmtxt").innerHTML=document.getElementById("fcplayingmusic").innerHTML
+document.getElementById("mmback").addEventListener("click", ()=>{
+document.getElementById("mback").click()
+document.getElementById("mmtxt").innerHTML=document.getElementById("fcplayingmusic").innerHTML
+})
+document.getElementById("mmplay").addEventListener("click", ()=>{
+if(player.paused==true){player.play()}
+else{player.pause()}
+})
+document.getElementById("mmnext").addEventListener("click", ()=>{
+document.getElementById("mforward").click()
+document.getElementById("mmtxt").innerHTML=document.getElementById("fcplayingmusic").innerHTML
+})
+
+}
+else{
+document.getElementById("miniplayer").style.display="none"
+let br = document.createElement("br")
+document.getElementById("mmtxt").innerHTML=date.toString().slice(0, 15)+"     "
+document.getElementById("mmtxt").append(br)
+document.getElementById("mmtxt").innerHTML=document.getElementById("mmtxt").innerHTML+date.toLocaleTimeString()+"   "+batterylvl
+}
+hide()
+document.getElementsByTagName("body").item(0).style.overflow="hidden"
+}
+else if(window.innerHeight>180){
+document.getElementById("navbarleft").style.display="flex"
+document.getElementById("minimode").style.display="none"
+}
 
 })
 function select(){
@@ -4993,9 +5063,11 @@ document.getElementById("txtviewopt5").addEventListener("click", ()=>{
 })
 
 loaded2=true
-
+let bgaudio = false
 window.addEventListener("blur", ()=>{
-  document.getElementsByTagName("title").item(0).innerHTML="Astro : passive"
+if(bgaudio==false){  document.getElementsByTagName("title").item(0).innerHTML="Astro : passive"}
+else{  document.getElementsByTagName("title").item(0).innerHTML="Astro : background"}
+
 
 })
 window.addEventListener("focus", ()=>{
@@ -5029,6 +5101,23 @@ if(localStorage.getItem("savedsleepimage")!=null){
 
 const DB_NAME = "multiAudioDB";
 const STORE_NAME = "audioFiles";
+let queuearray = []
+let queuenames = []
+let currentqueue = []
+let auxclick = ""
+let playingfrom = ""
+let playingfromscreen = "local"
+let audioarray2 = []
+let names2 = []
+let mindex2 = []
+let currentplaylist=[]
+let uploadarray = []
+let playlistarray = localStorage.getItem("playlistarray")
+let playlistname = localStorage.getItem("playlistname")
+if(playlistarray==null){playlistarray=[]}
+else{playlistarray=playlistarray.split(",");}
+if(playlistname==null){ playlistname=[]}
+else{playlistname=playlistname.split(",")}
 
 // Open IndexedDB
 let db;
@@ -5070,9 +5159,13 @@ console.log(names)
 
 for (let index = 0; index < names.length; index++) {
   let song = document.createElement("p")
+    let song2 = document.createElement("p")
   song.id="songcreate";
+   song2.id="musiccreate";
  song.innerText=names[index]; 
+  song2.innerText=names[index]; 
  document.getElementById("b2").append(song)
+  document.getElementById("musiclistbx").append(song2)
 
  //click
  song.addEventListener("click", ()=>{let psong = song.innerText
@@ -5082,6 +5175,7 @@ for (let index = 0; index < names.length; index++) {
     if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); mindex=index}  
     }
     player.src = audioarray[mindex]
+    
     player.play()
      console.log(player);
   player.addEventListener("mouseover", ()=>{
@@ -5091,16 +5185,290 @@ for (let index = 0; index < names.length; index++) {
   document.getElementById("fcplayingmusic").innerHTML="playing : "+psong    
   document.getElementById("fcsongtxt").innerHTML="playing : "+psong
   })
-song.addEventListener("dblclick", ()=>{song.style.display="none";
+   song2.addEventListener("click", ()=>{let psong = song.innerText
+  //player.removeEventListener("ended", ()=>{mautoplay()})
 
-let psong = song.innerText;
+  for (let index = 0; index < names.length; index++) {
+    if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); mindex=index}  
+    }
+    player.src = audioarray[mindex]
+    playingfrom="local"
+    player.play()
+     console.log(player);
+  player.addEventListener("mouseover", ()=>{
+    document.getElementById("songplaying").style.display="flex" 
+    document.getElementById("sptxt").innerHTML=psong
+  })
+  document.getElementById("fcplayingmusic").innerHTML="playing : "+psong    
+  document.getElementById("fcsongtxt").innerHTML="playing : "+psong
+  })
+   song2.addEventListener("auxclick", ()=>{
+  document.getElementById("auxitems").style.display="flex"
+  auxclick=song2.innerHTML
+})
+   document.getElementById("musicscreen").addEventListener("click", ()=>{
+  document.getElementById("auxitems").style.display="none"
+})
+
+   document.getElementById("queuetxt").addEventListener("click", ()=>{
+
+    if(auxclick==names[index]  && playingfromscreen=="local"){queuearray[queuearray.length]=audioarray[index]; queuenames[queuenames.length]=names[index]
+     if(currentqueue==0){currentqueue=queuearray.length}
+     console.log(currentqueue)
+        let song = document.createElement("p")
+   song.id="musiccreate";
+ song.innerText=names[index]; 
+ document.getElementById("musicqueuebx").append(song)
+ let num = currentqueue
+
+    }  
+    
+   })
+   document.getElementById("removetxt").addEventListener("click", ()=>{
+    if(auxclick==names[index] && playingfromscreen=="local"){song2.style.display="none";
+let psong = song2.innerText;
 for (let index = 0; index < names.length; index++) {
   if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); audioarray.splice(index, 1); names.splice(index, 1); console.log(names); console.log(array)}  
-}})
+}}})
+
+document.getElementById("playlistsel").addEventListener("focusout", ()=>{
+if(auxclick==names[index]){playlistarray[playlistarray.length]=document.getElementById("playlistsel").value+"//"+auxclick
+  localStorage.setItem("playlistarray", playlistarray)
+  let blank = playlistarray[playlistarray.length].split("//")
+  for (let index = 0; index < playlistname.length; index++) {
+ if(blank[0]==playlistname[index]){let create4 = document.createElement("p")
+create4.id="musiccreate"
+create4.innerHTML=blank[1]
+create4.style.fontSize="14px"
+create4.marginBottom ="15px"
+create4.style.width="80%"
+create4.style.color="rgba(199, 199, 199, 1)"
+document.getElementsByClassName("playlistitem").item(index).append(create4)}   
+  }
+
+}
+})
 }
   
 };
 }
+
+document.getElementById("msplay").addEventListener("click", ()=>{
+if(player.paused==false){player.pause()}
+else{player.play()}
+})
+document.getElementById("msfulls").addEventListener("click", ()=>{goFullscreen()})
+document.getElementById("msqueue").addEventListener("click", ()=>{document.getElementById("musicqueuebx").style.display="block"
+document.getElementById("musicplaylistbx").style.display="none"
+document.getElementById("musiclistbx").style.display="none"
+document.getElementById("musicsearchbx").style.display="none"
+document.getElementById("musicuploadbx").style.display="none"
+playingfromscreen=""
+document.getElementById("musictxt").innerHTML="queue"
+})
+document.getElementById("msplaylist").addEventListener("click", ()=>{document.getElementById("musicqueuebx").style.display="none"
+document.getElementById("musicplaylistbx").style.display="block"
+document.getElementById("musiclistbx").style.display="none"
+document.getElementById("musicsearchbx").style.display="none"
+document.getElementById("musicuploadbx").style.display="none"
+playingfromscreen=""
+document.getElementById("musictxt").innerHTML="playlist"
+})
+document.getElementById("mschat").addEventListener("click", ()=>{document.getElementById("musicqueuebx").style.display="none"
+document.getElementById("musicplaylistbx").style.display="none"
+document.getElementById("musiclistbx").style.display="none"
+document.getElementById("musicsearchbx").style.display="none"
+document.getElementById("musicuploadbx").style.display="block"
+playingfromscreen="upload"
+document.getElementById("musictxt").innerHTML="upload"
+})
+document.getElementById("msmenu").addEventListener("click", ()=>{document.getElementById("musicqueuebx").style.display="none"
+document.getElementById("musicplaylistbx").style.display="none"
+document.getElementById("musiclistbx").style.display="block"
+document.getElementById("musicuploadbx").style.display="none"
+document.getElementById("musicsearchbx").style.display="none"
+playingfromscreen="local"
+document.getElementById("musictxt").innerHTML="queue"
+})
+//names, audioarray, mindex
+setInterval(() => {
+document.getElementById("mssongname").innerHTML=document.getElementById("fcplayingmusic").innerHTML
+}, 1000);
+let plus = 0
+document.getElementById("mssearch").addEventListener("keydown", (event)=>{
+if(event.keyCode==13){
+for (let index = 0; index < plus; index++) {
+document.getElementsByClassName("10234").item(index).style.display="none"
+}
+if(playingfromscreen=="local"){
+for (let index = 0; index < names.length; index++) {
+if(names[index].toLowerCase().includes((document.getElementById("mssearch").value).toLowerCase())){
+    let song = document.createElement("p")
+   song.id="musiccreate";
+ song.innerText=names[index]; 
+ song.className="10234"
+ plus=plus+1
+ document.getElementById("musicsearchbx").append(song)
+ console.log(names[index])
+  song.addEventListener("click", ()=>{let psong = song.innerText
+  //player.removeEventListener("ended", ()=>{mautoplay()})
+
+  for (let index = 0; index < names.length; index++) {
+    if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); mindex=index}  
+    }
+    player.src = audioarray[mindex]
+    player.play()
+
+     console.log(player);
+  player.addEventListener("mouseover", ()=>{
+    document.getElementById("songplaying").style.display="flex" 
+    document.getElementById("sptxt").innerHTML=psong
+  })
+  document.getElementById("fcplayingmusic").innerHTML="playing : "+psong    
+  document.getElementById("fcsongtxt").innerHTML="playing : "+psong
+  })
+  song.addEventListener("auxclick", ()=>{
+  document.getElementById("auxitems").style.display="flex"
+  auxclick=song.innerHTML
+})
+   document.getElementById("musicscreen").addEventListener("click", ()=>{
+  document.getElementById("auxitems").style.display="none"
+})
+
+   document.getElementById("queuetxt").addEventListener("click", ()=>{
+
+    if(auxclick==names[index && playingfromscreen=="local"]){queuearray[queuearray.length]=audioarray[index]; queuenames[queuenames.length]=names[index]
+     if(currentqueue==0){currentqueue=queuearray.length}
+     console.log(currentqueue)
+        let song = document.createElement("p")
+   song.id="musiccreate";
+ song.innerText=names[index]; 
+ document.getElementById("musicqueuebx").append(song)
+ let num = currentqueue
+
+    }  
+    
+   })
+   document.getElementById("removetxt").addEventListener("click", ()=>{
+    if(auxclick==names[index]  && playingfromscreen=="local" && playingfromscreen=="upload"){song.style.display="none";
+let psong = song.innerText;
+for (let index = 0; index < names.length; index++) {
+  if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); audioarray.splice(index, 1); names.splice(index, 1); console.log(names); console.log(array)}  
+}}})
+}
+}
+document.getElementById("musicqueuebx").style.display="none"
+document.getElementById("musicplaylistbx").style.display="none"
+document.getElementById("musiclistbx").style.display="none"
+document.getElementById("musicuploadbx").style.display="none"
+document.getElementById("musicsearchbx").style.display="block"}
+
+else if(playingfromscreen=="upload"){
+for (let index = 0; index < names2.length; index++) {
+if(names2[index].toLowerCase().includes((document.getElementById("mssearch").value).toLowerCase())){
+    let song = document.createElement("p")
+   song.id="musiccreate";
+ song.innerText=names2[index]; 
+ song.className="10234"
+ plus=plus+1
+ document.getElementById("musicsearchbx").append(song)
+ console.log(names2[index])
+  song.addEventListener("click", ()=>{let psong = song.innerText
+  //player.removeEventListener("ended", ()=>{mautoplay()})
+
+  for (let index = 0; index < names2.length; index++) {
+    if(psong==names2[index]){console.log(psong); console.log(index); console.log(names2[index]); mindex2=index}  
+    }
+    player.src = audioarray2[mindex2]
+    player.play()
+
+     console.log(player);
+  player.addEventListener("mouseover", ()=>{
+    document.getElementById("songplaying").style.display="flex" 
+    document.getElementById("sptxt").innerHTML=psong
+  })
+  document.getElementById("fcplayingmusic").innerHTML="playing : "+psong    
+  document.getElementById("fcsongtxt").innerHTML="playing : "+psong
+  })
+  song.addEventListener("auxclick", ()=>{
+  document.getElementById("auxitems").style.display="flex"
+  auxclick=song.innerHTML
+})
+   document.getElementById("musicscreen").addEventListener("click", ()=>{
+  document.getElementById("auxitems").style.display="none"
+})
+
+   document.getElementById("queuetxt").addEventListener("click", ()=>{
+
+    if(auxclick==names2[index] && playingfromscreen=="upload"){queuearray[queuearray.length]=audioarray2[index]; queuenames[queuenames.length]=names2[index]
+     if(currentqueue==0){currentqueue=queuearray.length}
+     console.log(currentqueue)
+        let song = document.createElement("p")
+   song.id="musiccreate";
+ song.innerText=names2[index]; 
+ document.getElementById("musicqueuebx").append(song)
+ let num = currentqueue
+
+    }  
+    
+   })
+   document.getElementById("removetxt").addEventListener("click", ()=>{
+    if(auxclick==names2[index] && playingfromscreen=="upload"){song.style.display="none";
+let psong = song.innerText;
+for (let index = 0; index < names2.length; index++) {
+  if(psong==names2[index]){console.log(psong); console.log(index); console.log(names[index]); audioarray2.splice(index, 1); names2.splice(index, 1); console.log(names); console.log(array)}  
+}}})
+}
+}
+document.getElementById("musicqueuebx").style.display="none"
+document.getElementById("musicplaylistbx").style.display="none"
+document.getElementById("musiclistbx").style.display="none"
+document.getElementById("musicuploadbx").style.display="none"
+document.getElementById("musicsearchbx").style.display="block"}
+}
+})
+document.getElementById("mssearch").addEventListener("focusout", ()=>{
+  if(playingfromscreen=="local"){
+  setTimeout(() => {
+ document.getElementById("musicqueuebx").style.display="none"
+document.getElementById("musicplaylistbx").style.display="none"
+document.getElementById("musiclistbx").style.display="block"
+document.getElementById("musicuploadbx").style.display="none"
+document.getElementById("musicsearchbx").style.display="none"   
+  }, 1000);
+ }
+else if(playingfromscreen=="upload"){
+setTimeout(() => {
+document.getElementById("musicqueuebx").style.display="none"
+document.getElementById("musicplaylistbx").style.display="none"
+document.getElementById("musiclistbx").style.display="none"
+document.getElementById("musicuploadbx").style.display="block"
+document.getElementById("musicsearchbx").style.display="none"   
+}, 1000);
+}
+})
+
+document.getElementById("msnext").addEventListener("click", ()=>{document.getElementById("mforward").click()})
+document.getElementById("msback").addEventListener("click", ()=>{document.getElementById("mback").click()})
+setInterval(() => {
+  document.getElementById("timeline").lenght=player.duration
+document.getElementById("timeline").value=player.currentTime
+}, 100);
+
+function goFullscreen(elem = document.documentElement) {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { // Safari
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { // IE11
+    elem.msRequestFullscreen();
+  }
+}
+
+
+
+//the music funstons
+
 function musicp (){
   let ppsong = ""
   let locate = chattext.value.indexOf("play")
@@ -5130,8 +5498,24 @@ player.addEventListener("ended", ()=>{mreplay()})
 player.addEventListener("ended", ()=>{mautoplay()})
 player.addEventListener("ended", ()=>{mrandomplay()})
 
+let point = 0
+
 function mrandomplay(){ 
-  if(songmode=="random"){
+ if(songmode=="random" && currentqueue==0 && playingfrom=="upload"){
+   let num = Math.floor(Math.random()*(audioarray2.length-1))
+    console.log(player)
+  player.src=audioarray2[num]
+    console.log(num)
+    player.play()
+    player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=names2[num]
+    })
+    document.getElementById("fcplayingmusic").innerHTML="playing : "+names2[num]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+names2[num]
+ if(nextsong!=""){player.src=audioarray[nextsong];player.play();nextsong=""} 
+ }
+ else if(songmode=="random" && currentqueue==0 && playingfrom=="local"){
    let num = Math.floor(Math.random()*(audioarray.length-1))
     console.log(player)
   player.src=audioarray[num]
@@ -5144,11 +5528,45 @@ function mrandomplay(){
     document.getElementById("fcplayingmusic").innerHTML="playing : "+names[num]
     document.getElementById("fcsongtxt").innerHTML="playing : "+names[num]
  if(nextsong!=""){player.src=audioarray[nextsong];player.play();nextsong=""} }
-}
+   else if(playingfrom=="playlist" && songmode=="random"){
+point=Math.floor(Math.random()*(currentplaylist.length-1))
+if(point<currentplaylist.length){
+player.src=currentplaylist[point]
+player.play()
+console.log(point)}
+  }
+ else if(songmode=="random"){
+  player.src=queuearray[currentqueue-1]
+  if(currentqueue==queuearray.length){currentqueue=0}
+  else{currentqueue=currentqueue+1}
+  player.play()
+      player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=queuenames[currentqueue-2]
+    })
+      document.getElementById("fcplayingmusic").innerHTML="playing : "+queuenames[currentqueue-2]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+queuenames[currentqueue-2]
+ }
+console.log(currentqueue)}
 
 
 function mautoplay(){ 
-  if(songmode=="forwardplay"){
+if(songmode=="forwardplay"  && currentqueue==0 && playingfrom=="upload"){
+    mindex2=mindex2+1
+      if(mindex2==audioarray2.length){mindex2=0; console.log("end")};
+    player.src=audioarray2[mindex2]
+      console.log(mindex2)
+      player.play()
+    truet=true
+    player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=names2[mindex2]
+    })
+    document.getElementById("fcplayingmusic").innerHTML="playing : "+names2[mindex2]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+names2[mindex2]
+   if(nextsong!=""){player.src=audioarray[nextsong];player.play();nextsong=""} 
+}
+ else if(songmode=="forwardplay"  && currentqueue==0 && playingfrom=="local"){
     mindex=mindex+1
       if(mindex==audioarray.length){mindex=0; console.log("end")};
     player.src=audioarray[mindex]
@@ -5161,11 +5579,42 @@ function mautoplay(){
     })
     document.getElementById("fcplayingmusic").innerHTML="playing : "+names[mindex]
     document.getElementById("fcsongtxt").innerHTML="playing : "+names[mindex]
-   if(nextsong!=""){player.src=audioarray[nextsong];player.play();nextsong=""} }   
-}
+   if(nextsong!=""){player.src=audioarray[nextsong];player.play();nextsong=""} }
+  else if(playingfrom=="playlist" && songmode=="forwardplay"){
+point=point+1
+if(point<currentplaylist.length){
+player.src=currentplaylist[point]
+player.play()
+console.log(point)}
+  }
+ else if(songmode=="forwardplay"){
+  player.src=queuearray[currentqueue-1]
+  if(currentqueue==queuearray.length){currentqueue=0}
+  else{currentqueue=currentqueue+1}
+  player.play()
+      player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=queuenames[currentqueue-2]
+    })
+      document.getElementById("fcplayingmusic").innerHTML="playing : "+queuenames[currentqueue-2]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+queuenames[currentqueue-2]
+ }   
+console.log(currentqueue)}
 
 function mreplay(){ 
-  if(songmode=="replay"){
+if(songmode=="replay"  && currentqueue==0 && playingfrom=="upload"){
+  player.src=audioarray2[mindex2]
+    console.log(mindex2)
+    player.play()
+    player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=names2[mindex2]
+    })
+    document.getElementById("fcplayingmusic").innerHTML="playing : "+names2[mindex2]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+names2[mindex2]
+   if(nextsong!=""){player.src=audioarray[nextsong];player.play();nextsong=""} 
+}
+ else if(songmode=="replay"  && currentqueue==0 && playingfrom=="local"){
   player.src=audioarray[mindex]
     console.log(mindex)
     player.play()
@@ -5176,11 +5625,56 @@ function mreplay(){
     document.getElementById("fcplayingmusic").innerHTML="playing : "+names[mindex]
     document.getElementById("fcsongtxt").innerHTML="playing : "+names[mindex]
    if(nextsong!=""){player.src=audioarray[nextsong];player.play();nextsong=""} }
-}
+  else if(playingfrom=="playlist" && songmode=="forwardplay"){
+point=point+1
+if(point<currentplaylist.length){
+player.src=currentplaylist[point]
+player.play()
+console.log(point)}
+  }
+ else if(songmode=="replay"){
+  player.src=queuearray[currentqueue-1]
+  if(currentqueue==queuearray.length){currentqueue=0}
+  else{currentqueue=currentqueue+1}
+  player.play()
+      player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=queuenames[currentqueue-2]
+    })
+      document.getElementById("fcplayingmusic").innerHTML="playing : "+queuenames[currentqueue-2]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+queuenames[currentqueue-2]
+ }
+console.log(currentqueue)}
 
 
 
 document.getElementById("mback").addEventListener("click", ()=>{
+if(currentqueue==0 && playingfrom=="upload"){
+  mindex2=mindex2-1
+if(mindex2==-1){mindex2=audioarray2.length-1};
+  if(songmode=="replay"){
+    player.src = audioarray2[mindex2]
+  player.play()
+   console.log(player);
+  }
+  else if(songmode=="forwardplay"){
+    player.src = audioarray2[mindex2]
+  player.play()
+   console.log(player);
+  }
+  else if(songmode=="random"){mindex2=Math.floor(Math.random() *audioarray2.length-1); 
+    player.src = audioarray2[mindex2]
+    player.play()
+     console.log(player);}
+    console.log(songmode)
+    player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=names2[mindex2]
+    })
+    document.getElementById("fcplayingmusic").innerHTML="playing : "+names2[mindex2]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+names2[mindex2]
+}
+else if(currentqueue==0 && playingfrom=="local"){
 mindex=mindex-1
 if(mindex==-1){mindex=audioarray.length-1};
 if(songmode=="replay"){player.src = audioarray[mindex]
@@ -5200,8 +5694,56 @@ else if(songmode=="random"){mindex=Math.floor(Math.random() *audioarray.length-1
   })
   document.getElementById("fcplayingmusic").innerHTML="playing : "+names[mindex]
   document.getElementById("fcsongtxt").innerHTML="playing : "+names[mindex]
-})
+}
+else if(currentqueue==0 && playingfrom=="playlist"){
+point=point-1
+if(point!=-1){
+player.src=currentplaylist[point]
+player.play()
+console.log(point)}
+else{point=0}
+}
+else{
+player.src=queuearray[currentqueue-1]
+currentqueue=currentqueue-1
+  if(currentqueue==-1){currentqueue=0}
+
+  player.play()
+      player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=queuenames[currentqueue-2]
+    })
+      document.getElementById("fcplayingmusic").innerHTML="playing : "+queuenames[currentqueue-2]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+queuenames[currentqueue-2]
+}
+console.log(currentqueue)})
 document.getElementById("mforward").addEventListener("click", ()=>{
+if(currentqueue==0 && playingfrom=="upload"){
+  mindex2=mindex2+1
+if(mindex2==audioarray2.length){mindex2=0};
+  if(songmode=="replay"){
+    player.src = audioarray2[mindex2]
+  player.play()
+   console.log(player);
+  }
+  else if(songmode=="forwardplay"){
+    player.src = audioarray2[mindex2]
+  player.play()
+   console.log(player);
+  }
+  else if(songmode=="random"){mindex2=Math.floor(Math.random() *audioarray2.length-1); 
+    player.src = audioarray2[mindex2]
+    player.play()
+     console.log(player);}
+    console.log(songmode)
+    player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=names2[mindex2]
+    })
+    document.getElementById("fcplayingmusic").innerHTML="playing : "+names2[mindex2]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+names2[mindex2]
+}
+else if(currentqueue==0 && playingfrom=="local"){
   mindex=mindex+1
 if(mindex==audioarray.length){mindex=0};
   if(songmode=="replay"){
@@ -5225,10 +5767,214 @@ if(mindex==audioarray.length){mindex=0};
     })
     document.getElementById("fcplayingmusic").innerHTML="playing : "+names[mindex]
     document.getElementById("fcsongtxt").innerHTML="playing : "+names[mindex]
-  })
+ }
+else if(currentqueue==0 && playingfrom=="playlist"){
+point=point+1
+if(point!=currentplaylist.length){
+player.src=currentplaylist[point]
+player.play()
+console.log(point)}
+else{point=currentplaylist.length-1}
+}
+ else{
+player.src=queuearray[currentqueue-1]
+currentqueue=currentqueue+1
+  if(currentqueue==queuearray.length+1){currentqueue=0}
+
+  player.play()
+      player.addEventListener("mouseover", ()=>{
+      document.getElementById("songplaying").style.display="flex" 
+      document.getElementById("sptxt").innerHTML=queuenames[currentqueue-2]
+    })
+      document.getElementById("fcplayingmusic").innerHTML="playing : "+queuenames[currentqueue-2]
+    document.getElementById("fcsongtxt").innerHTML="playing : "+queuenames[currentqueue-2]
+} console.log(currentqueue)})
 player.addEventListener("mouseleave", ()=>{
     document.getElementById("songplaying").style.display="none" 
   })
+
+function upload(event){
+
+
+  let pre = names2.length
+
+for (let index = 0; index < document.getElementById("uploadbtn").files.length; index++) {
+  pre = names2.length
+  let song = document.createElement("p")
+  song.id="musiccreate";
+  let object = event.target.files[index]
+ if(object.name.includes(",")){  names2[pre]=object.name.replaceAll(",", ".")}
+  else{names2[pre] = object.name}
+ song.innerText=names2[pre]; console.log(names2)
+ audioarray2[pre]=URL.createObjectURL(event.target.files[index])
+
+ document.getElementById("musicuploadbx").append(song)
+
+   song.addEventListener("click", ()=>{let psong = song.innerText
+  //player.removeEventListener("ended", ()=>{mautoplay()})
+
+  for (let index = 0; index < names2.length; index++) {
+    if(psong==names2[index]){console.log(psong); console.log(index); console.log(names2[index]); mindex2=index}  
+    }
+    player.src = audioarray2[mindex2]
+    playingfrom = "upload"
+    player.play()
+     console.log(player);
+  player.addEventListener("mouseover", ()=>{
+    document.getElementById("songplaying").style.display="flex" 
+    document.getElementById("sptxt").innerHTML=psong
+  })
+  document.getElementById("fcplayingmusic").innerHTML="playing : "+psong    
+  document.getElementById("fcsongtxt").innerHTML="playing : "+psong
+  })
+   song.addEventListener("auxclick", ()=>{
+  document.getElementById("auxitems").style.display="flex"
+  auxclick=song.innerHTML
+})
+   document.getElementById("musicscreen").addEventListener("click", ()=>{
+  document.getElementById("auxitems").style.display="none"
+})
+
+   document.getElementById("queuetxt").addEventListener("click", ()=>{
+
+    if(auxclick==names2[index] && playingfromscreen=="upload"){queuearray[queuearray.length]=audioarray2[index]; queuenames[queuenames.length]=names2[index]
+     if(currentqueue==0){currentqueue=queuearray.length}
+     console.log(currentqueue)
+        let song = document.createElement("p")
+   song.id="musiccreate";
+ song.innerText=names2[index]; 
+ document.getElementById("musicqueuebx").append(song)
+ let num = currentqueue
+
+    }  
+    
+   })
+   document.getElementById("removetxt").addEventListener("click", ()=>{
+    if(auxclick==names2[index] && playingfromscreen=="upload"){song.style.display="none";
+let psong = song.innerText;
+for (let index = 0; index < names2.length; index++) {
+  if(psong==names2[index]){console.log(psong); console.log(index); console.log(names2[index]); audioarray2.splice(index, 1); names2.splice(index, 1); console.log(names2); console.log(array)}  
+}}})
+
+}}
+document.getElementById("playlisttxt").addEventListener("mouseover", ()=>{
+document.getElementById("playlistsel").focus()
+})
+document.getElementById("playlistaddbtn").addEventListener("click", ()=>{
+if(document.getElementById("playlisttitle").value!=""){
+playlistname[playlistname.length]=document.getElementById("playlisttitle").value
+localStorage.setItem("playlistname", playlistname)
+let create = document.createElement("option")
+let create2 = document.createElement("option")
+let create3 = document.createElement("details")
+let create4 = document.createElement("p")
+create4.id="musiccreate"
+create4.innerHTML="new song title"
+create4.style.fontSize="14px"
+create4.marginBottom ="15px"
+create4.style.width="80%"
+create4.style.color="rgba(199, 199, 199, 1)"
+create3.append(create4)
+create.value=document.getElementById("playlisttitle").value
+create.innerHTML=document.getElementById("playlisttitle").value
+create2.id="musiccreate"
+create2.style.marginTop="15px"
+create2.innerHTML=document.getElementById("playlisttitle").value
+document.getElementById("playlistsel").append(create)
+document.getElementById("musicplaylistbx").append(create2)
+create3.style.marginTop="5px"
+create3.className="playlistitem"
+create3.style.fontFamily="Sans-serif"
+create3.style.fontSize="14px"
+document.getElementById("musicplaylistbx").append(create3)
+create2.addEventListener("click", ()=>{
+playingfrom="playlist"
+
+for (let index = 0; index < playlistarray.length; index++) {
+let blank = playlistarray[index].split("//")
+if(blank[0]==create2.innerHTML){let psong=blank[1]
+  for (let index = 0; index < names.length; index++) {
+    if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); player.src=audioarray[index]; player.play();
+      point=0 
+      player.addEventListener("mouseover", ()=>{
+    document.getElementById("songplaying").style.display="flex" 
+    document.getElementById("sptxt").innerHTML=psong
+  })
+  document.getElementById("fcplayingmusic").innerHTML="playing : "+psong    
+  document.getElementById("fcsongtxt").innerHTML="playing : "+psong
+      return}  
+    }
+}
+}
+})
+}
+console.log(playlistname)
+})
+console.log(playlistarray)
+for (let index = 0; index < playlistname.length; index++) {
+let create = document.createElement("option")
+let create2 = document.createElement("option")
+let create3 = document.createElement("details")
+create2.innerHTML=playlistname[index]
+for (let index = 0; index < playlistarray.length; index++) {
+let blank = playlistarray[index].split("//")
+if(blank[0]==create2.innerHTML){let create4 = document.createElement("p")
+create4.id="musiccreate"
+create4.innerHTML=blank[1]
+create4.style.fontSize="14px"
+create4.marginBottom ="15px"
+create4.style.width="80%"
+create4.style.color="rgba(199, 199, 199, 1)"
+create3.append(create4)}
+}
+
+
+create.value=playlistname[index]
+create.innerHTML=playlistname[index]
+create2.id="musiccreate"
+create2.style.marginTop="15px"
+create3.className="playlistitem"
+document.getElementById("playlistsel").append(create)
+document.getElementById("musicplaylistbx").append(create2)
+create3.style.marginTop="5px"
+create3.style.fontFamily="Sans-serif"
+create3.style.fontSize="12px"
+document.getElementById("musicplaylistbx").append(create3)
+create2.addEventListener("click", ()=>{
+playingfrom="playlist"
+currentplaylist=[]
+for (let index = 0; index < playlistarray.length; index++) {
+let blank = playlistarray[index].split("//")
+if(blank[0]==create2.innerHTML){let psong=blank[1]
+  for (let index = 0; index < names.length; index++) {
+    if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]);
+      currentplaylist[currentplaylist.length]=audioarray[index]
+      }  
+    }
+}
+}
+console.log(currentplaylist)
+for (let index = 0; index < playlistarray.length; index++) {
+let blank = playlistarray[index].split("//")
+if(blank[0]==create2.innerHTML){let psong=blank[1]
+  for (let index = 0; index < names.length; index++) {
+    if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); player.src=audioarray[index]; player.play();
+      point=0 
+
+      player.addEventListener("mouseover", ()=>{
+    document.getElementById("songplaying").style.display="flex" 
+    document.getElementById("sptxt").innerHTML=create2.innerHTML
+  })
+  document.getElementById("fcplayingmusic").innerHTML="playing : "+create2.innerHTML    
+  document.getElementById("fcsongtxt").innerHTML="playing : "+create2.innerHTML
+      return}  
+    }
+}
+}
+
+})
+}
+
 
  function fade(src) {
 document.getElementById("eye1").style.animationName="fade"
@@ -5270,8 +6016,8 @@ document.getElementById("chatarea").addEventListener("dblclick", ()=>{
 hide()
 })
 document.getElementById("chatarea").addEventListener("drag", ()=>{
-  micon=true; document.getElementById("sleepscreen").style.display="block"; player.pause(); document.getElementById("sleepscreen").style.animationName="transistion3";
-  speak2(); start=true
+  micon=true; document.getElementById("sleepscreen").style.display="block";  document.getElementById("sleepscreen").style.animationName="transistion3";
+  speak2(); start=true; document.getElementById("mmvoice").style.display="flex"
 })
 
 function setimg2(event) {
@@ -5322,16 +6068,61 @@ document.getElementById("setdone").addEventListener("click", ()=>{
   location.reload()
  }, 1000); 
 })
+//network
+async function hasActiveConnection(e) {
+  try {
+    const response = await fetch("https://clients3.google.com/generate_204", {
+      method: "GET",
+      cache: "no-cache",
+      mode: "no-cors"
+    });
+
+    document.getElementById("linetxt").innerHTML="online"
+  } catch (e) {
+        document.getElementById("linetxt").innerHTML="offline"
+  }
+}
 
 document.getElementById("nbastro").innerHTML=localStorage.getItem("astro-usernamedata")
 document.getElementById("nbastro1").innerHTML=localStorage.getItem("astro-usernamedata")
 let key = ""
 let key2 = ""
 window.addEventListener("keypress", (event)=>{
-
- key = event.key
+let add = 0
+key = event.key
 console.log(key)
-if(key == " " && key2==" " && document.getElementById("chat").value==""){ document.getElementById("mic").click()
+if(key==" "){document.getElementById("chat").focus()}
+if(key==" "){console.log("start")
+let addset = setInterval(() => {
+add=add+1
+if(add==20){document.getElementById("toolbar").style.display="flex"
+  hasActiveConnection()
+  document.getElementById("chat").blur()
+  document.getElementById("chat").value=""
+}
+}, 10);
+window.addEventListener("keyup", ()=>{
+clearInterval(addset)
+console.log("stop")
+console.log(add)
+
+})
+
+
+}
+setTimeout(() => {
+  key=""
+  key2=""
+}, 500);
+setTimeout(() => {
+if(document.getElementById("chat").value==" "){document.getElementById("chat").blur()
+    document.getElementById("chat").value=""
+}
+}, 2000);
+if(key == " " && key2==" " && document.getElementById("chat").value==" "){ document.getElementById("mic").click()
+    document.getElementById("chat").value=""
+chattext.value=""
+document.getElementById("chat").blur()
   key=""
 key2=""
 }
@@ -5339,7 +6130,711 @@ else{ key2 = event.key}
 
 })
 
+navigator.mediaDevices.enumerateDevices().then(devices => {
+  devices.forEach(device => {
+    if (device.kind === 'audiooutput') {
+      console.log('Audio Output:', device.label || 'Unknown Device');
+    }
+  });
+});
 
+document.getElementById("chatarea").addEventListener("click", ()=>{
+document.getElementById("toolbar").style.display="none"
+})
+document.getElementById("sleepscreen").addEventListener("click", ()=>{
+document.getElementById("toolbar").style.display="none"
+})
+document.getElementById("navbarleft").addEventListener("click", ()=>{
+document.getElementById("toolbar").style.display="none"
+})
+document.getElementById("navbarbottom").addEventListener("click", ()=>{
+document.getElementById("toolbar").style.display="none"
+})
+document.getElementById("musicscreen").addEventListener("click", ()=>{
+document.getElementById("toolbar").style.display="none"
+})
+
+document.getElementsByClassName("tool").item(0).addEventListener("click", ()=>{
+if(musicmode==false){
+document.getElementById("musicscreen").style.display="flex"
+document.getElementById("musicscreenblank").style.display="block"
+document.getElementById("musicscreencolor").style.display="block"
+document.getElementsByClassName("tool").item(0).style.backgroundColor="rgba(22, 111, 255, 1)"
+if(localStorage.getItem("applymenu")=="true"){document.getElementsByClassName("tool").item(0).style.backgroundColor=abstractcolor}
+musicmode=true
+}
+else{
+document.getElementById("musicscreen").style.display="none"
+document.getElementById("musicscreenblank").style.display="none"
+document.getElementById("musicscreencolor").style.display="none"
+document.getElementsByClassName("tool").item(0).style.backgroundColor="rgba(255, 255, 255, 1)"
+musicmode=false
+}
+})
+document.getElementsByClassName("tool").item(2).addEventListener("click", ()=>{
+if(document.getElementById("timer").style.display=="none"){
+document.getElementById("timer").style.display="flex"
+document.getElementsByClassName("tool").item(2).style.backgroundColor="rgba(22, 111, 255, 1)"
+if(localStorage.getItem("applymenu")=="true"){document.getElementsByClassName("tool").item(2).style.backgroundColor=abstractcolor}
+
+}
+else{
+document.getElementById("timer").style.display="none"
+document.getElementsByClassName("tool").item(2).style.backgroundColor="rgba(255, 255, 255, 1)"
+}
+})
+document.getElementsByClassName("tool").item(1).addEventListener("click", ()=>{
+if(donotdisturb==false){
+donotdisturb=true
+document.getElementsByClassName("tool").item(1).style.backgroundColor="rgba(22, 111, 255, 1)"
+if(localStorage.getItem("applymenu")=="true"){document.getElementsByClassName("tool").item(1).style.backgroundColor=abstractcolor}
+
+}
+else{
+donotdisturb=false
+document.getElementsByClassName("tool").item(1).style.backgroundColor="rgba(255, 255, 255, 1)"
+}
+})
+
+document.getElementsByClassName("tool").item(4).addEventListener("click", ()=>{
+if(bgaudio==false){document.getElementById("silent").play()
+document.getElementById("silent").volume="0.001"
+document.getElementById("silent").loop=true
+document.getElementsByClassName("tool").item(4).style.backgroundColor="rgba(22, 111, 255, 1)"
+if(localStorage.getItem("applymenu")=="true"){document.getElementsByClassName("tool").item(4).style.backgroundColor=abstractcolor}
+bgaudio=true}
+else{
+bgaudio=false
+document.getElementById("silent").pause()
+document.getElementsByClassName("tool").item(4).style.backgroundColor="rgba(255, 255, 255, 1)"
+}
+
+})
+let nightlight = false
+document.getElementsByClassName("tool").item(5).addEventListener("click", ()=>{
+if(nightlight==false){document.getElementById("nightscreen").style.display="block"
+document.getElementsByClassName("tool").item(5).style.backgroundColor="rgba(255, 131, 22, 1)"
+nightlight=true}
+else{document.getElementById("nightscreen").style.display="none"
+nightlight=false
+document.getElementsByClassName("tool").item(5).style.backgroundColor="rgba(255, 255, 255, 1)"
+}
+
+})
+
+document.getElementsByClassName("tool").item(5).addEventListener("pointerdown", ()=>{
+let add = 0
+console.log("down")
+let addset = setInterval(() => {
+if(add<100){add=add+1}
+document.getElementById("nslvl").innerHTML=add+"%"
+
+if(add>2){document.getElementById("nslvl").style.display="block"
+document.getElementById("lbimg").style.display="none"
+document.getElementById("nightscreen").style.display="block"
+let percent = add/100
+localStorage.setItem("nightlightbrightness", percent)
+document.getElementById("nightscreen").style.backgroundColor="rgb(0, 0, 0,"+percent+")"}
+}, 100);
+
+document.getElementsByClassName("tool").item(5).addEventListener("mouseup", ()=>{
+clearInterval(addset)
+console.log(add)
+console.log("up")
+setTimeout(() => {
+document.getElementById("nslvl").style.display="none"
+document.getElementById("lbimg").style.display="block" 
+}, 1500);
+
+})
+})
+let percent = Number(localStorage.getItem("nightlightbrightness"))
+document.getElementById("nightscreen").style.backgroundColor="rgb(0, 0, 0,"+percent+")"
+
+document.getElementsByClassName("tool").item(3).addEventListener("auxclick", ()=>{
+
+  document.getElementById("qtsel").style.display="block"
+document.getElementsByClassName("tool").item(3).style.backgroundColor="rgba(22, 111, 255, 1)"
+
+
+setTimeout(() => {
+  document.getElementsByClassName("tool").item(3).style.backgroundColor="rgba(255, 255, 255, 1)"
+}, 500);
+
+
+})
+document.getElementsByClassName("tool").item(3).addEventListener("click", ()=>{
+  let id =  document.getElementById("qtsel").value
+
+if(id=="voicebar"){ micon=true; document.getElementById("sleepscreen").style.display="block"; document.getElementById("sleepscreen").style.animationName="transistion3";
+ speak2(); start=true;}
+ if(id=="focus"){ micon=true; document.getElementById("sleepscreen").style.display="block"; document.getElementById("sleepscreen").style.animationName="transistion3";
+ speak2(); start=true; document.getElementById("focusbtn").click()}
+ if(id=="restart"){ location.reload()}
+ document.getElementById(id).click()
+})
+ document.getElementById("qtsel").addEventListener("input", ()=>{
+  localStorage.setItem("quicktoolaction", document.getElementById("qtsel").value)
+  document.getElementById("qtsel").style.display="none"})
+ document.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+});
+document.getElementById("qtsel").addEventListener("click", function (e) {
+  e.stopPropagation(); 
+});
+
+document.getElementById("qtsel").value=localStorage.getItem("quicktoolaction")
+
+setInterval(()=>{
+if(document.getElementById("ractivebox").style.display=="flex"){document.getElementById("mininotifi").style.display="flex"
+document.getElementById("miniimg").src="notifications_FILL0_wght400_GRAD0_opsz24.png"
+document.getElementById("minired").addEventListener("click", ()=>{
+document.getElementById("ractivedel").click()
+})
+document.getElementById("miniblue").addEventListener("click", ()=>{
+document.getElementById("ractivecnl").click()
+})
+document.getElementById("mininotifitxt").innerHTML=document.getElementById("ractivetxt").innerHTML
+}
+else if(document.getElementById("snoozebox").style.display=="flex"){document.getElementById("mininotifi").style.display="flex"
+document.getElementById("miniimg").src="alarm_FILL0_wght400_GRAD0_opsz24.png"
+document.getElementById("minired").addEventListener("click", ()=>{
+document.getElementById("snoozecnl").click()
+})
+document.getElementById("miniblue").addEventListener("click", ()=>{
+document.getElementById("snoozebtn").click()
+})
+document.getElementById("mininotifitxt").innerHTML="new alarm"
+}
+else{document.getElementById("mininotifi").style.display="none"}
+
+if(document.getElementById("timer").style.display=="flex"){document.getElementById("mmtimer").style.display="flex"
+  document.getElementById("mmslider").style.display="block"
+  document.getElementById("mmslider").addEventListener("click", ()=>{
+if(  document.getElementById("mmslider").value==1){  document.getElementById("pause2").click()
+  document.getElementById("pause21").click()
+}
+else if(  document.getElementById("mmslider").value==0){  document.getElementById("start3").click()
+  document.getElementById("start31").click()
+}
+  })
+}
+else{document.getElementById("mmtimer").style.display="none"
+  document.getElementById("mmslider").style.display="none"
+}
+if(document.getElementById("range").value==0){document.getElementById("mmtimer").innerHTML=timervalue2h.value+":"+timervalue2m.value+":"+timervalue2s.value}
+if(document.getElementById("range").value==1){document.getElementById("mmtimer").innerHTML=document.getElementById("timervalueh").innerHTML+":"+document.getElementById("timervaluem").innerHTML+":"+document.getElementById("timervalues").innerHTML}
+}, 1000)
+
+player.addEventListener("play", ()=>{
+let active = true
+setTimeout(() => {
+  active=false
+}, 800);
+player.addEventListener("pause", ()=>{
+if(active==true){document.getElementById("mic").click()
+let audio = document.createElement("audio")
+audio.src="notification-alert-269289.mp3"
+audio.play()
+}
+})
+})
+
+
+function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      document.getElementById("topbar").onmousedown = dragMouseDown;
+      let nulli = false
+let off = false
+let setadd = null
+let add =1
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+ nulli=false
+ add =1
+ off = false
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+  
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+ if(nulli==false){ pos4 = e.clientX;nulli=true}
+      pos3 = e.clientX;
+
+      // set the element's new position:
+    
+     if(pos1<=20 && pos3>1070){ elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";}
+      console.log(pos1)
+      console.log(elmnt.offsetLeft-pos1)
+      if(pos3>1200){setTimeout(() => {
+         document.getElementById("sethighlight").style.display="flex"
+      }, 500);}
+    if(pos3<1071){document.getElementById("topbar").style.backgroundImage="linear-gradient(to right, #ff2b2bf3 , rgba(255, 69, 22, 0.954) 80%)"
+    document.getElementById("topbar").innerHTML="cleared..."
+  let setadd = setInterval(() => {
+      add=add+1
+      if(add>150){ document.getElementById("topbar").style.display="none"}
+    }, 100);
+    document.addEventListener("mouseup",()=>{clearInterval(setadd)})
+    mode="tips"
+ off=true
+
+    }
+    else{document.getElementById("topbar").style.backgroundImage="linear-gradient(to right, #2b5dfff3 , rgba(25, 223, 128, 0.954) 80%)"}
+    if(localStorage.getItem("applyhighlight")=="true"){document.getElementById("topbar").style.backgroundImage="linear-gradient(to right, "+defaultcolor+", "+abstractcolor+" 80%)"}
+    }
+  
+    function closeDragElement() {
+      // stop moving when mouse button is released:
+      document.onmouseup = null;
+     
+     
+if(off==true){setTimeout(() => {
+   tips()
+}, 2000);}
+      document.onmousemove = null;
+      elmnt.style.left=(1075)+"px"
+      document.getElementById("topbar").style.backgroundImage="linear-gradient(to right, #2b5dfff3 , rgba(25, 223, 128, 0.954) 80%)"
+      if(localStorage.getItem("applyhighlight")=="true"){document.getElementById("topbar").style.backgroundImage="linear-gradient(to right, "+defaultcolor+", "+abstractcolor+" 80%)"}
+    }
+  }
+dragElement(document.getElementById("topbar"));
+  document.getElementById("shcnl").addEventListener("click", ()=>{
+  document.getElementById("sethighlight").style.display="none"
+  })
+
+  document.getElementById("shbtn1").addEventListener("click", ()=>{
+     document.getElementById("alarm").click() 
+   document.getElementById("add2").click() 
+    document.getElementById("sethighlight").style.display="none"
+    document.getElementById("alarmdetail").value=document.getElementById("shname").value
+  })
+    document.getElementById("shbtn2").addEventListener("click", ()=>{
+     document.getElementById("games").click() 
+    document.getElementById("add3").click() 
+     document.getElementById("sethighlight").style.display="none"
+     document.getElementById("remindercontent").value=document.getElementById("shname").value
+  })
+    document.getElementById("shbtn3").addEventListener("click", ()=>{
+     document.getElementById("note").click() 
+     document.getElementById("add4").click()
+     document.getElementById("sethighlight").style.display="none"
+      document.getElementById("notenamein").value=document.getElementById("shname").value 
+  })
+let mode = ""
+let temperature = 60
+let weathercode = 4
+function batt() {
+let battlvlo = batterylvl
+let add = 1
+setInterval(() => {if(mode=="batt"){
+if(battlvlo!=batterylvl){
+let diff = parseInt(battlvlo)-parseInt(batterylvl)
+add=Math.floor(add/diff)
+battlvlo = batterylvl
+if(Math.floor(((parseInt(add)*parseInt(batterylvl))/60))>60){
+let blank = (((parseInt(add)*parseInt(batterylvl))/60)).toString()
+console.log(blank)
+blank=blank.split(".")
+console.log(blank)
+blank=Number(blank[1].slice(0, 1))
+console.log(blank)
+blank=(blank/10)*60
+console.log(blank)
+
+document.getElementById("topbar").innerHTML = Math.floor((((parseInt(add)*parseInt(batterylvl))/60)/60))+"hr "+blank+"min remaining"}
+else{document.getElementById("topbar").innerHTML = Math.floor(((parseInt(add)*parseInt(batterylvl))/60))+"min remaining"
+  if(Math.floor(((parseInt(add)*parseInt(batterylvl))/60))==NaN){document.getElementById("topbar").innerHTML ="battery life 🍃"}
+}
+if(batterystate=="plugged in"){
+document.getElementById("topbar").innerHTML = "plugged in"
+}
+console.log(add)
+add=1
+}
+else{add=add+1
+  console.log(batterylvl)
+}
+
+}}, 1000);
+}
+let random1=""
+function tips() {mode="tips"
+ random1 = Math.floor(Math.random()*2)
+if(random1==0){
+const url = 'https://api.open-meteo.com/v1/forecast?latitude=10.5036&longitude=7.4337&current=temperature_2m';
+
+fetch(url)
+  .then(response => {
+    if (!response.ok) {throw new Error(`HTTP error! Status: response.status`);
+   
+  } return response.json();}
+  )
+  .then(data => {
+    const temp = data.current.temperature_2m;
+    console.log(`Current temperature in Lagos:${temp}°C`);
+    temperature=temp
+    console.log(temperature)
+
+   
+const url2 = 'https://api.open-meteo.com/v1/forecast?latitude=10.5036&longitude=7.4337&current_weather=true';
+
+fetch(url2)
+  .then(response => {
+    if (!response.ok) {throw new Error(`HTTP error! Status: response.status`);
+   
+  } return response.json();}
+  )
+  .then(data => {
+    const temp = data.current_weather.weathercode;
+    weathercode=temp
+    console.log(`Current weathercode in Lagos:${temp}°C`);
+let weather = ""
+ if(weathercode==0){weather = "Clear sky"}
+else if(weathercode==1){weather = "Mainly clear"}
+else if(weathercode==2){weather = "Partly cloudy"}
+else if(weathercode==3){weather = "Overcast"}
+else if(weathercode==45){weather = "Fog"}
+else if(weathercode==48){weather = "Depositing rime fog"}
+else if(weathercode==51){weather = "Light drizzle"}
+else if(weathercode==53){weather = "Moderate drizzle"}
+else if(weathercode==55){weather = "Dense drizzle"}
+else if(weathercode==56){weather = "Light freezing drizzle"}
+else if(weathercode==57){weather = "Dense freezing drizzle"}
+else if(weathercode==61){weather = "Slight rain"}
+else if(weathercode==63){weather = "Moderate rain"}
+else if(weathercode==65){weather = "Heavy rain"}
+else if(weathercode==66){weather = "Light freezing rain"}
+else if(weathercode==67){weather = "Heavy freezing rain"}
+else if(weathercode==71){weather = "Slight snow fall"}
+else if(weathercode==73){weather = "Moderate snow fall"}
+else if(weathercode==75){weather = "Heavy snow fall"}
+else if(weathercode==77){weather = "Snow grains"}
+else if(weathercode==80){weather = "Slight rain showers"}
+else if(weathercode==81){weather = "Moderate rain showers"}
+else if(weathercode==82){weather = "Violent rain showers"}
+else if(weathercode==85){weather = "Slight snow showers"}
+else if(weathercode==86){weather = "Heavy snow showers"}
+else if(weathercode==95){weather = "Thunderstorm"}
+else if(weathercode==96){weather = "Thunderstorm with slight hail"}
+else if(weathercode==99){weather = "Thunderstorm with heavy hail"}
+else{weather = "unknown weather"}
+if(mode=="tips"){ document.getElementById("topbar").innerHTML=temperature+"°C "+weather }   })
+  .catch(error => {
+    console.error('Error fetching weather data:', error);
+  });
+
+  })
+  .catch(error => {
+    console.error('Error fetching weather data:', error);
+   if(mode=="tips"){  document.getElementById("topbar").innerHTML="☁️ no weather info"}
+  });
+}
+else if(random1==1){ 
+
+let music = [ "Latest music charts", "New album releases", "Trending TikTok songs", "Top Afrobeats tracks", "Popular playlists on Spotify", "Underground artists to watch", "Lyrics of trending songs", "Best music videos this week", "Song of the day", "Throwback hits"]
+let sport = [ "Today’s football matches", "NBA latest scores", "Transfer news", "Athlete injury updates", "Match highlights", "Top scorers this season", "Upcoming fixtures", "F1 race schedule", "UFC fight night", "Fantasy league tips"]
+let entertainment = [ "Latest blockbuster movies", "Trending Netflix shows", "Upcoming cinema releases", "Viral celebrity news", "Movie trailers", "Award show winners", "K-drama trends", "Anime drops this season", "TV show ratings", "Behind-the-scenes clips"]
+let tech = [ "New smartphone releases", "Trending gadgets", "AI breakthroughs", "iOS/Android updates", "Best budget tech", "App of the day", "Cybersecurity tips", "Gaming laptops under $1k", "Reviews for latest devices", "Tech memes"]
+let fashion = [ "Outfit inspo", "Streetwear trends", "Affordable fashion brands", "New sneaker drops", "Celeb outfits this week", "Thrift styling tips", "What’s in for summer", "Fashion do’s and don’ts", "Dressing by body type", "Accessory trends"]
+let gaming = [ "New game releases", "Top PC games", "Battle royale tips", "PS/Xbox updates", "eSports tournaments", "Game walkthroughs", "Mods for Ravenfield", "Multiplayer lobbies", "Game performance tips", "Free games this month"]
+let random = Math.floor(Math.random()*6)
+if(random==0 ){let random = Math.floor(Math.random()*10)
+if(localStorage.getItem("musichighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+music[random]}
+else if(localStorage.getItem("sporthighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+sport[random]}
+else if(localStorage.getItem("entertainhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+entertainment[random]}
+else if(localStorage.getItem("gaminghighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+gaming[random]}
+else if(localStorage.getItem("fashionhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+fashion[random]}
+else if(localStorage.getItem("techhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+tech[random]}
+else{document.getElementById("topbar").innerHTML="add search in settings"}
+}
+if(random==1 ){let random = Math.floor(Math.random()*10)
+if(localStorage.getItem("sporthighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+sport[random]}
+else if(localStorage.getItem("gaminghighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+gaming[random]}
+else if(localStorage.getItem("entertainhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+entertainment[random]}
+else if(localStorage.getItem("fashionhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+fashion[random]}
+else if(localStorage.getItem("techhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+tech[random]}
+else if(localStorage.getItem("musichighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+music[random]}
+else{document.getElementById("topbar").innerHTML="add search in settings"}
+}
+if(random==2 ){let random = Math.floor(Math.random()*10)
+if(localStorage.getItem("entertainhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+entertainment[random]}
+else if(localStorage.getItem("fashionhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+fashion[random]}
+else if(localStorage.getItem("sporthighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+sport[random]}
+else if(localStorage.getItem("musichighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+music[random]}
+else if(localStorage.getItem("techhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+tech[random]}
+else if(localStorage.getItem("gaminghighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+gaming[random]}
+else{document.getElementById("topbar").innerHTML="add search in settings"}
+}
+if(random==3 ){let random = Math.floor(Math.random()*10)
+if(localStorage.getItem("gaminghighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+gaming[random]}
+else if(localStorage.getItem("techhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+tech[random]}
+else if(localStorage.getItem("entertainhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+entertainment[random]}
+else if(localStorage.getItem("fashionhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+fashion[random]}
+else if(localStorage.getItem("musichighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+music[random]}
+else if(localStorage.getItem("sporthighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+sport[random]}
+else{document.getElementById("topbar").innerHTML="add search in settings"}
+}
+if(random==4 ){let random = Math.floor(Math.random()*10)
+if(localStorage.getItem("fashionhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+fashion[random]}
+else if(localStorage.getItem("musichighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+music[random]}
+else if(localStorage.getItem("techhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+tech[random]}
+else if(localStorage.getItem("sporthighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+sport[random]}
+else if(localStorage.getItem("entertainhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+entertainment[random]}
+else if(localStorage.getItem("gaminghighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+gaming[random]}
+else{document.getElementById("topbar").innerHTML="add search in settings"}
+}
+if(random==5 ){let random = Math.floor(Math.random()*10)
+if(localStorage.getItem("techhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+tech[random]}
+else if(localStorage.getItem("gaminghighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+gaming[random]}
+else if(localStorage.getItem("entertainhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+entertainment[random]}
+else if(localStorage.getItem("sporthighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+sport[random]}
+else if(localStorage.getItem("fashionhighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+fashion[random]}
+else if(localStorage.getItem("musichighlight")=="true"){document.getElementById("topbar").innerHTML="🔎  "+music[random]}
+else{document.getElementById("topbar").innerHTML="add search in settings"}
+}
+}
+document.getElementById("topbar").addEventListener("auxclick", ()=>{if(mode=="tips"){
+mode="batt"
+document.getElementById("topbar").innerHTML="battery life 🍃"}
+})
+}
+batt()
+document.getElementById("topbar").addEventListener("dblclick", ()=>{if(mode=="tips" && random1==1){
+searchd.href="https://www.google.com/search?q="+document.getElementById("topbar").innerHTML;
+searchd.click()  }
+})
+let highlight = localStorage.getItem("highlightdata")
+let checked = []
+if(highlight==null){highlight=[]}
+else{highlight=highlight.split(",")}
+let date3 = new Date
+date3=date3.toLocaleDateString()
+document.getElementById("shdate").value=date3
+
+tips()
+for (let index = 0; index < highlight.length; index++) {
+let create = document.createElement("p")
+let blank=highlight[index].split(";;")
+let shname = blank[0]
+let shdate = blank[1]
+create.innerHTML=shdate+" -- "+shname
+if(shdate==date3){
+document.getElementById("topbar").innerHTML=shname
+mode="highlight"
+document.getElementById("topbar").addEventListener("auxclick", ()=>{if(mode=="highlight"){
+let blank2 = blank[3].split("//")
+console.log(blank2)
+for (let index = 0; index < blank2.length; index++) {
+if(blank2[index]=="music"){document.getElementById("song").click()}
+if(blank2[index]=="note"){document.getElementById("note").click()}
+if(blank2[index]=="timer"){document.getElementById("timer").style.display="flex"}
+if(blank2[index]=="scheduel"){document.getElementById("clean").click()}
+if(blank2[index]=="voice"){  micon=true; document.getElementById("sleepscreen").style.display="block";  document.getElementById("sleepscreen").style.animationName="transistion3";
+  speak2(); start=true; document.getElementById("mmvoice").style.display="flex"}
+if(blank2[index]=="focus"){  micon=true; document.getElementById("sleepscreen").style.display="block";  document.getElementById("sleepscreen").style.animationName="transistion3";
+  speak2(); start=true; document.getElementById("mmvoice").style.display="flex"
+  document.getElementById("focusbtn").click()}
+if(blank2[index]=="musicm"){document.getElementById("musicscreen").style.display="flex"}
+if(blank2[index]=="reminder"){document.getElementById("games").click()}
+}
+if(blank[2]!=""){location.href=blank[2]}
+}})
+}
+console.log(date)
+document.getElementById("shright").append(create)
+create.addEventListener("auxclick", ()=>{
+highlight.splice(index, 1)
+create.style.display="none"
+localStorage.setItem("highlightdata", highlight)
+console.log(highlight)
+})
+}
+
+
+
+document.getElementsByClassName("shcheckbox1").item(0).addEventListener("input", ()=>{
+if(document.getElementsByClassName("shcheckbox1").item(0).checked==true){checked[checked.length]="music"}
+else{checked.splice((checked.indexOf("music")), 1)}
+console.log(checked)
+})
+document.getElementsByClassName("shcheckbox1").item(1).addEventListener("input", ()=>{
+if(document.getElementsByClassName("shcheckbox1").item(1).checked==true){checked[checked.length]="note"}
+else{checked.splice((checked.indexOf("note")), 1)}
+console.log(checked)
+})
+document.getElementsByClassName("shcheckbox1").item(2).addEventListener("input", ()=>{
+if(document.getElementsByClassName("shcheckbox1").item(2).checked==true){checked[checked.length]="timer"}
+else{checked.splice((checked.indexOf("timer")), 1)}
+console.log(checked)
+})
+document.getElementsByClassName("shcheckbox1").item(3).addEventListener("input", ()=>{
+if(document.getElementsByClassName("shcheckbox1").item(3).checked==true){checked[checked.length]="scheduel"}
+else{checked.splice((checked.indexOf("scheduel")), 1)}
+console.log(checked)
+})
+document.getElementsByClassName("shcheckbox1").item(4).addEventListener("input", ()=>{
+if(document.getElementsByClassName("shcheckbox1").item(4).checked==true){checked[checked.length]="voice"}
+else{checked.splice((checked.indexOf("voice")), 1)}
+console.log(checked)
+})
+document.getElementsByClassName("shcheckbox1").item(5).addEventListener("input", ()=>{
+if(document.getElementsByClassName("shcheckbox1").item(5).checked==true){checked[checked.length]="focus"}
+else{checked.splice((checked.indexOf("focus")), 1)}
+console.log(checked)
+})
+document.getElementsByClassName("shcheckbox1").item(6).addEventListener("input", ()=>{
+if(document.getElementsByClassName("shcheckbox1").item(6).checked==true){checked[checked.length]="musicm"}
+else{checked.splice((checked.indexOf("musicm")), 1)}
+console.log(checked)
+})
+document.getElementsByClassName("shcheckbox1").item(7).addEventListener("input", ()=>{
+if(document.getElementsByClassName("shcheckbox1").item(7).checked==true){checked[checked.length]="reminder"}
+else{checked.splice((checked.indexOf("reminder")), 1)}
+console.log(checked)
+})
+document.getElementById("shadd").addEventListener("click", ()=>{
+if(document.getElementById("shname").value!="" && document.getElementById("shdate").value!=""){
+let checkedconvert = checked.toString().replaceAll(",", "//")
+highlight[highlight.length]=document.getElementById("shname").value+";;"+document.getElementById("shdate").value+";;"+document.getElementById("shlinkapp").value+";;"+checkedconvert
+localStorage.setItem("highlightdata", highlight)
+console.log(highlight)
+let create = document.createElement("p")
+create.innerHTML=document.getElementById("shdate").value+" -- "+document.getElementById("shname").value
+document.getElementById("shright").append(create)
+create.addEventListener("auxclick", ()=>{
+let blank = create.innerHTML.split(" -- ")
+let find = blank[1]+";;"+blank[0]
+for (let index = 0; index < highlight.length; index++) {
+if(highlight[index].includes(find)){find=index}
+}
+highlight.splice(find, 1)
+create.style.display="none"
+localStorage.setItem("highlightdata", highlight)
+console.log(highlight)
+})
+}
+})
+document.getElementsByClassName("preference").item(0).addEventListener("click", ()=>{
+if(document.getElementsByClassName("preference").item(0).checked==false){localStorage.setItem("entertainhighlight", "false")}
+else{localStorage.setItem("entertainhighlight", "true")}
+console.log(localStorage.getItem("entertainhighlight"))
+})
+document.getElementsByClassName("preference").item(1).addEventListener("click", ()=>{
+if(document.getElementsByClassName("preference").item(1).checked==false){localStorage.setItem("gaminghighlight", "false")}
+else{localStorage.setItem("gaminghighlight", "true")}
+})
+document.getElementsByClassName("preference").item(2).addEventListener("click", ()=>{
+if(document.getElementsByClassName("preference").item(2).checked==false){localStorage.setItem("techhighlight", "false")}
+else{localStorage.setItem("techhighlight", "true")}
+})
+document.getElementsByClassName("preference").item(3).addEventListener("click", ()=>{
+if(document.getElementsByClassName("preference").item(3).checked==false){localStorage.setItem("sporthighlight", "false")}
+else{localStorage.setItem("sporthighlight", "true")}
+})
+document.getElementsByClassName("preference").item(4).addEventListener("click", ()=>{
+if(document.getElementsByClassName("preference").item(4).checked==false){localStorage.setItem("fashionhighlight", "false")}
+else{localStorage.setItem("fashionhighlight", "true")}
+})
+document.getElementsByClassName("preference").item(5).addEventListener("click", ()=>{
+if(document.getElementsByClassName("preference").item(5).checked==false){localStorage.setItem("musichighlight", "false")}
+else{localStorage.setItem("musichighlight", "true")}
+})
+
+if(localStorage.getItem("entertainhighlight")=="true"){document.getElementsByClassName("preference").item(0).checked=true}
+if(localStorage.getItem("gaminghighlight")=="true"){document.getElementsByClassName("preference").item(1).checked=true}
+if(localStorage.getItem("techhighlight")=="true"){document.getElementsByClassName("preference").item(2).checked=true}
+if(localStorage.getItem("sporthighlight")=="true"){document.getElementsByClassName("preference").item(3).checked=true}
+if(localStorage.getItem("fashionhighlight")=="true"){document.getElementsByClassName("preference").item(4).checked=true}
+if(localStorage.getItem("musichighlight")=="true"){document.getElementsByClassName("preference").item(5).checked=true}
+
+
+
+document.getElementById("themecolor1").addEventListener("input", ()=>{
+localStorage.setItem("defaultcolor", document.getElementById("themecolor1").value)
+console.log(localStorage.getItem("defaultcolor"))
+})
+document.getElementById("themecolor2").addEventListener("input", ()=>{
+localStorage.setItem("abstractcolor", document.getElementById("themecolor2").value)
+console.log(localStorage.getItem("abstractcolor"))
+})
+document.getElementsByClassName("preference").item(6).addEventListener("click", ()=>{
+if(document.getElementsByClassName("preference").item(6).checked==false){localStorage.setItem("applychat", "false")}
+else{localStorage.setItem("applychat", "true")}
+})
+document.getElementsByClassName("preference").item(7).addEventListener("click", ()=>{
+if(document.getElementsByClassName("preference").item(7).checked==false){localStorage.setItem("applyhighlight", "false")}
+else{localStorage.setItem("applyhighlight", "true")}
+})
+document.getElementsByClassName("preference").item(8).addEventListener("click", ()=>{
+if(document.getElementsByClassName("preference").item(8).checked==false){localStorage.setItem("applymenu", "false")}
+else{localStorage.setItem("applymenu", "true")}
+})
+
+if(localStorage.getItem("applychat")=="true"){document.getElementsByClassName("preference").item(6).checked=true}
+if(localStorage.getItem("applyhighlight")=="true"){document.getElementsByClassName("preference").item(7).checked=true}
+if(localStorage.getItem("applymenu")=="true"){document.getElementsByClassName("preference").item(8).checked=true}
+
+if(localStorage.getItem("applyhighlight")=="true"){document.getElementById("topbar").style.backgroundImage="linear-gradient(to right, "+defaultcolor+", "+abstractcolor+" 80%)"}
+
+document.getElementById("getbtn").addEventListener("click", ()=>{
+localStorage.setItem("newversionstage1", "none")
+localStorage.setItem("newversionstage2", "show")
+location.reload()
+})
+if(localStorage.getItem("newversionstage1")=="none"){
+document.getElementById("newversion").style.display="none"
+}
+if(localStorage.getItem("newversionstage2")=="show"){
+    let box2 = document.createElement("article");
+   let reply2 = document.createElement("h6");
+       let box3 = document.createElement("article");
+   let reply = document.createElement("h6");
+    let create = document.createElement("ul");
+    let create1 = document.createElement("li");
+    let create2 = document.createElement("li");
+    let create3 = document.createElement("li");
+    let create4 = document.createElement("li");
+    let create5 = document.createElement("li");
+    let create6 = document.createElement("button");
+let chatarea = document.getElementById("chatarea");
+create1.innerHTML="get started with highlight"
+create2.innerHTML="customize astro theme"
+create3.innerHTML="customize your search highlights"
+create4.innerHTML="configure mini mode"
+create5.innerHTML="get started with shortcuts - double tab space bar to use mic. short press spacebar for quick action. tap spacebar to start typing"
+create.append(create1)
+create.append(create2)
+create.append(create3)
+create.append(create4)
+create.append(create5)
+reply.innerHTML="version 3.3 🥹✨"
+box2.appendChild(reply)
+box2.appendChild(create)
+create6.innerHTML="got it"
+create6.id="create6"
+
+box2.appendChild(create6)
+reply2.innerHTML="new highlight bar ✨ -- slide left to create new events, slide right to clear highlight bar, slide left and hold for 3s to remove highlight bar, right click bar to activate event, dblclick bar to search --- customize your search highlight. link ceartain actions to events like notes and applications"
+box3.appendChild(reply2)
+create6.addEventListener("click", ()=>{localStorage.setItem("newversionstage2", "none")
+  chatarea.appendChild(box3);
+  chatarea.scrollTo(0, 3000000000000000000000)
+})
+chatarea.appendChild(box2);
+
+}
+
+
+//serviceworker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/astro/sw.js').then(reg => {
@@ -5360,5 +6855,3 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
-
-
