@@ -5175,7 +5175,7 @@ for (let index = 0; index < names.length; index++) {
     if(psong==names[index]){console.log(psong); console.log(index); console.log(names[index]); mindex=index}  
     }
     player.src = audioarray[mindex]
-    
+       playingfrom="local"
     player.play()
      console.log(player);
   player.addEventListener("mouseover", ()=>{
@@ -6832,7 +6832,30 @@ create6.addEventListener("click", ()=>{localStorage.setItem("newversionstage2", 
 chatarea.appendChild(box2);
 
 }
+document.getElementById("mscontrol").addEventListener("mouseover", ()=>{
 
+document.getElementById("coverfile").style.display="block"
+})
+document.getElementById("cover").addEventListener("mouseout", ()=>{
+
+document.getElementById("coverfile").style.display="none"
+})
+function imageacc(event) {
+document.getElementById("musicpng").src=URL.createObjectURL(event.target.files[0])
+document.getElementById("pfpsave").src=URL.createObjectURL(event.target.files[0])
+document.getElementById("pfpsave").style.display="none"
+const img = document.getElementById("pfpsave");
+img.onload = function () {
+const canvas = document.createElement("canvas");
+canvas.width = img.width;
+canvas.height = img.height;
+const ctx = canvas.getContext("2d");
+ctx.drawImage(img, 0, 0);
+const dataURL = canvas.toDataURL("image/png");
+localStorage.setItem("savedmusicimg", dataURL);
+}
+}
+if(localStorage.getItem("savedmusicimg")!=null){document.getElementById("musicpng").src=localStorage.getItem("savedmusicimg")}
 
 //serviceworker
 if ('serviceWorker' in navigator) {
@@ -6855,3 +6878,4 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
