@@ -5350,7 +5350,7 @@ if ('serviceWorker' in navigator) {
         newWorker.onstatechange = () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
             // New version detected
-            window.alert("New update available!");
+            console.log("New update available!");
             // Optional: window.location.reload();
           }
         };
@@ -5360,4 +5360,5 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
 
