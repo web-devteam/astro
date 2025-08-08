@@ -6,51 +6,53 @@ const urlsToCache4 = ['/astro/_68767b25-4b4b-4a41-bd28-91150c1a722b.jpg', '/astr
 const allurlsToCache = [...urlsToCache, ...urlsToCache2, ...urlsToCache3, ...urlsToCache4]
 
 self.addEventListener('install', event => {
+  console.log('[SW] Installing…');
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(allurlsToCache);
-      })
+    caches.open(CACHE_NAME).then(async cache => {
+      console.log('[SW] Opened cache:', CACHE_NAME);
+
+      for (const url of allurlsToCache) {
+        try {
+          const response = await fetch(url, { cache: 'no-store' });
+          if (!response.ok) {
+            console.warn(`[SW] Skipping ${url} - HTTP ${response.status}`);
+            continue;
+          }
+          await cache.put(url, response.clone());
+          console.log(`[SW] Cached: ${url}`);
+        } catch (err) {
+          console.error(`[SW] Failed to fetch & cache: ${url}`, err);
+        }
+      }
+    }).catch(err => console.error('[SW] Cache open failed:', err))
   );
-   self.skipWaiting();
+
+  self.skipWaiting();
 });
 
+// ACTIVATE EVENT - DELETE OLD CACHES
+self.addEventListener('activate', event => {
+  console.log('[SW] Activating and cleaning old caches…');
+  event.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => {
+            console.log(`[SW] Deleting old cache: ${key}`);
+            return caches.delete(key);
+          })
+      );
+    })
+  );
+  self.clients.claim();
+});
+
+// FETCH EVENT
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request).then(response => {
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-          const responseToCache = response.clone();
-          caches.open(CACHE_NAME)
-            .then(cache => {
-              cache.put(event.request, responseToCache);
-            });
-          return response;
-        });
-      })
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    })
   );
 });
-
-self.addEventListener('activate', (event) => {
-  const allowedCaches = [CACHE_NAME];
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys.map(key => {
-          if (!allowedCaches.includes(key)) {
-            return caches.delete(key);
-          }
-        })
-      )
-    )
-  );
-  self.clients.claim(); // Optional: take control of all pages immediately
-});
-
