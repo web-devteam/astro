@@ -6868,7 +6868,7 @@ if ('serviceWorker' in navigator) {
         newWorker.onstatechange = () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
             // New version detected
-            console.log("New update available!");
+            window.alert("New update available! ✨");
             // Optional: window.location.reload();
           }
         };
@@ -6878,4 +6878,5 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
 
