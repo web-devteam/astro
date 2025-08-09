@@ -2903,7 +2903,7 @@ color: rgb(255, 255, 255);
     width: 340px;
 overflow: hidden;
     height: 350px;
-  background-image: url(_68767b25-4b4b-4a41-bd28-91150c1a722b.jpg);
+  background-image: url(default.jpg);
 background-size: 100%;
     background-color: #ffffff;
     border-radius: 30px;
@@ -4119,3 +4119,4 @@ margin-top: 5px;
 margin-top: 0px;
 }
 }
+
