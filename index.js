@@ -4986,14 +4986,8 @@ if(window.innerHeight<430 && focused==true){
   console.log("selected")
   select()
 }
-else if(window.innerHeight<430){
-  document.getElementById("error").style.display="flex"
-}
 else if(window.innerHeight>430){
   document.getElementById("error").style.display="none"
-}
-if(window.innerWidth<330){
-  document.getElementById("error").style.display="flex"
 }
 if(window.innerHeight<180){
   document.getElementById("error").style.display="none"
@@ -6878,5 +6872,6 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
 
 
