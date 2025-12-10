@@ -1,3 +1,4 @@
+document.getElementById("newversion").addEventListener("click", ()=>{document.getElementById("newversion").style.display="none"})
 setTimeout(() => {
   document.getElementById("loadpage").style.animationName="transistion"
   document.getElementById("section1").style.animationName="transistion4"
@@ -6872,6 +6873,7 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
 
 
 
