@@ -22,7 +22,7 @@ position: fixed;
 left: 0;
 top: 0;
 background-color: rgba(52, 52, 52, 0.244);
-display: flex;
+display: none;
 align-items: center;
 justify-content: center;
 column-gap: 100px;
@@ -4114,5 +4114,6 @@ margin-top: 5px;
 margin-top: 0px;
 }
 }
+
 
 
