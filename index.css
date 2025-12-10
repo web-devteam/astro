@@ -3604,8 +3604,7 @@ position: absolute;
 
   }
   @media screen and (max-height: 430px) {
-    #error{display: flex;
-    } 
+
     #errorimg{
         width: 30%;
     }
@@ -3669,9 +3668,7 @@ border-left: 1.5px solid black;
 
       }
       @media screen and (max-width: 330px) {
-#error{
-    display: flex;
-}
+
       }
       @media screen and (max-width: 400px) {
 #commandlist{
@@ -4061,9 +4058,7 @@ opacity: 100%;
 }
 }
 @media screen and (max-height: 300px) {
-#error{
-display: none;
-}
+
 }
 #setscreen{
 width: 100%;
@@ -4119,4 +4114,5 @@ margin-top: 5px;
 margin-top: 0px;
 }
 }
+
 
